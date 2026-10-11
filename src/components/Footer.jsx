@@ -40,7 +40,7 @@ export default function Footer({ onOpenAnthem }) {
           <h3 className="footer-heading">Site Directory</h3>
           <ul className="footer-links">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/history">Legacy &amp; History</Link></li>
+            <li><Link to="/about">About Us</Link></li>
             <li><Link to="/notices">Notices</Link></li>
             <li><Link to="/activities">Activities</Link></li>
             <li><Link to="/gallery">Gallery</Link></li>

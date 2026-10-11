@@ -34,8 +34,8 @@ export default function Navbar() {
           <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             Home
           </NavLink>
-          <NavLink to="/history" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
-            Legacy &amp; History
+          <NavLink to="/about" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
+            About Us
           </NavLink>
           <NavLink to="/notices" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             Notices
