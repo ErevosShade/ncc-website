@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import AboutHeroSlider from '../components/AboutHeroSlider';
+import AboutSections from '../components/AboutSections';
 
 export default function Home({ onOpenAnthem }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -45,8 +47,27 @@ export default function Home({ onOpenAnthem }) {
             <p className="hero-subtitle">
               Birla Institute of Technology, Mesra, Ranchi · Under NCC Directorate Bihar &amp; Jharkhand
             </p>
-            <div className="hero-meta-strip">
-              <span className="hero-meta-dot"></span>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <a href="#about" className="btn btn-saffron">
+                Discover Our Unit ↓
+              </a>
+              <a href="#history" className="btn btn-outline" style={{ color: '#FFF', borderColor: 'rgba(255,255,255,0.4)' }}>
+                Timeline of Journey ↓
+              </a>
+              <Link to="/about" className="btn btn-navy" style={{ background: '#1c1e69', border: '1px solid rgba(255,255,255,0.2)' }}>
+                About Us →
+              </Link>
+              <button 
+                onClick={onOpenAnthem} 
+                className="btn btn-outline" 
+                style={{ color: '#FFF', borderColor: 'rgba(255,255,255,0.4)' }}
+                type="button"
+              >
+                ♫ Song of NCC
+              </button>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '2rem', fontSize: '0.75rem', color: '#94A3B8', fontWeight: 700, letterSpacing: '0.08em' }}>
+              <span style={{ width: '28px', height: '2px', background: 'var(--ncc-orange)' }}></span>
               <span>ESTABLISHED 1956</span>
               <span>•</span>
               <span>MESRA, RANCHI</span>
@@ -61,74 +82,23 @@ export default function Home({ onOpenAnthem }) {
       {/* =========================================================================
           3. ABOUT THE UNIT SECTION
           ========================================================================= */}
-      <section className="page-section" id="about">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '3.5rem', alignItems: 'center' }}>
-          <div>
-            <div style={{
-              background: 'linear-gradient(135deg, #1A145A 0%, #0E0A30 100%)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '2.5rem 2rem',
-              color: '#FFF',
-              border: '2px solid var(--ncc-gold)',
-              boxShadow: 'var(--shadow-md)',
-              position: 'relative'
-            }}>
-              <span style={{ fontSize: '5rem', fontWeight: 800, fontFamily: 'var(--font-display)', color: 'transparent', WebkitTextStroke: '1.5px rgba(255,200,11,0.6)', lineHeight: 0.9, display: 'block' }}>
-                03
-              </span>
-              <strong style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: '#FFF', display: 'block', margin: '1rem 0 0.5rem 0' }}>
-                JHARKHAND COMPOSITE TECHNICAL COMPANY
-              </strong>
-              <p style={{ fontSize: '0.8125rem', color: '#CBD5E1', margin: 0, lineHeight: 1.6 }}>
-                Birla Institute of Technology, Mesra · Under NCC Directorate Bihar &amp; Jharkhand
-              </p>
-              <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.15)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <span style={{ color: 'var(--ncc-gold)', fontSize: '1.25rem' }}>✦</span>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--ncc-gold)' }}>“Unity and Discipline”</strong>
-                  <small style={{ fontSize: '0.6875rem', letterSpacing: '0.08em', color: '#A0B2CD' }}>THE NCC MOTTO</small>
-                </div>
-              </div>
-            </div>
+      <section className="about-page-wrapper" id="about" style={{ padding: '4.5rem 1.25rem 3.5rem' }}>
+        <div className="about-page-container">
+          <div className="section-heading-block" style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
+            <span className="badge-tag badge-gold" style={{ display: 'inline-block', marginBottom: '0.75rem' }}>
+              ABOUT NCC &amp; OUR UNIT
+            </span>
+            <h2 className="section-main-title">Leadership, Purpose &amp; Service</h2>
+            <p className="section-desc" style={{ margin: '0 auto' }}>
+              Official establishment aims, heraldic symbols, motto, and song of 3 Jharkhand Composite Technical Company NCC, BIT Mesra.
+            </p>
           </div>
 
-          <div>
-            <h2 className="section-main-title">A legacy built on purpose and service.</h2>
-            <p className="section-desc" style={{ marginBottom: '1rem' }}>
-              NCC at BIT Mesra is part of a wider national movement that encourages young citizens to become disciplined, confident, and service-minded leaders.
-            </p>
-            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              The unit's own history reaches back to January 1956, when it was raised at Sindri as an EME section. It moved to Mesra in January 1957, then evolved through several technical formations before taking its present Jharkhand designation.
-            </p>
+          {/* 3D Carousel with 4 WhatsApp Photos */}
+          <AboutHeroSlider />
 
-            <div style={{ display: 'grid', gap: '0.875rem', marginBottom: '1.75rem' }}>
-              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--ncc-red)', fontWeight: 800 }}>✓</span>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Discipline with Purpose</strong>
-                  <small style={{ color: 'var(--text-subtle)' }}>Personal responsibility, military coordination, and commitment.</small>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--ncc-navy)', fontWeight: 800 }}>✓</span>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Learning by Doing</strong>
-                  <small style={{ color: 'var(--text-subtle)' }}>Parade training, fieldcraft, weapon handling, camps, and practical exercises.</small>
-                </div>
-              </div>
-              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                <span style={{ color: 'var(--ncc-sky-dark)', fontWeight: 800 }}>✓</span>
-                <div>
-                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Service Beyond Campus</strong>
-                  <small style={{ color: 'var(--text-subtle)' }}>Participation in national initiatives, disaster response, and river conservation.</small>
-                </div>
-              </div>
-            </div>
-
-            <a href="#history" className="btn btn-navy">
-              Read Our Full Journey ↓
-            </a>
-          </div>
+          {/* Screenshot Sections (Aim, Motto, Flag, Song) */}
+          <AboutSections onOpenAnthem={onOpenAnthem} />
         </div>
       </section>
 
@@ -225,8 +195,8 @@ export default function Home({ onOpenAnthem }) {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/history" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              <span>Click for More: View Dedicated Legacy &amp; History Page</span>
+            <Link to="/about" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
+              <span>Click for More: View Dedicated About Us Page</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

@@ -10,8 +10,8 @@ Built with **React**, **Vite**, and **React Router DOM**.
 
 The portal features five dedicated, consistently designed pages:
 
-1. **Home (`/`)**: Full SPA landing page with hero command, key stats (1956, 1957, 3 Platoons, 200 Cadres), full **Legacy & History** timeline, technical platoons, training syllabus, achievements/certifications, documented activities, gallery highlights, enrolment guidelines, and interactive FAQ.
-2. **Legacy & History (`/history`)**: Chronological formation timeline (1956 Sindri, 1957 Mesra, 1964 1 Bihar EME, 1967 Mixed Regiment, 1977 Composite Tech Co, 2000+ 3 Jharkhand CTC), official crest heraldry, and technical platoons (Engineers, Signals, EME).
+1. **Home (`/`)**: Full SPA landing page with hero command, key stats (1956, 1957, 3 Platoons, 200 Cadres), timeline, technical platoons, training syllabus, achievements/certifications, documented activities, gallery highlights, enrolment guidelines, and interactive FAQ.
+2. **About Us (`/about`)**: Chronological formation timeline (1956 Sindri, 1957 Mesra, 1964 1 Bihar EME, 1967 Mixed Regiment, 1977 Composite Tech Co, 2000+ 3 Jharkhand CTC), official crest heraldry, and technical platoons (Engineers, Signals, EME).
 3. **Notices (`/notices`)**: Authorised circulars, enrolment notices, examination nominal roll deadlines, and camp movement orders with interactive category filter and detail viewer.
 4. **Activities (`/activities`)**: Documented unit events (Independence Day Parade, Puneet Sagar Abhiyan river cleanup, Kargil Vijay Diwas marathon, Swachh Bharat Abhiyan) with interactive category filtering.
 5. **Gallery (`/gallery`)**: Archival photo repository with full-screen interactive image lightbox.

@@ -10,7 +10,7 @@ import AudioPlayer from './components/AudioPlayer';
 
 // Exactly 5 Pages
 import Home from './pages/Home';
-import LegacyHistory from './pages/LegacyHistory';
+import AboutUs from './pages/AboutUs';
 import Notices from './pages/Notices';
 import Activities from './pages/Activities';
 import Gallery from './pages/Gallery';
@@ -41,7 +41,9 @@ export default function App() {
       <div id="main-content">
         <Routes>
           <Route path="/" element={<Home onOpenAnthem={() => setAnthemOpen(true)} />} />
-          <Route path="/history" element={<LegacyHistory />} />
+          <Route path="/about" element={<AboutUs onOpenAnthem={() => setAnthemOpen(true)} />} />
+          <Route path="/about-us" element={<Navigate to="/about" replace />} />
+          <Route path="/history" element={<Navigate to="/about" replace />} />
           <Route path="/notices" element={<Notices />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/gallery" element={<Gallery />} />
