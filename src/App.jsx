@@ -37,7 +37,6 @@ export default function App() {
       <ScrollToTop />
       <Topbar />
       <Navbar />
-      <NoticeTicker />
 
       <div id="main-content">
         <Routes>

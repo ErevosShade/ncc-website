@@ -161,7 +161,7 @@ export default function Notices() {
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(14, 10, 48, 0.8)',
+            backgroundColor: 'rgba(10, 11, 26, 0.85)',
             backdropFilter: 'blur(4px)',
             zIndex: 1000,
             display: 'flex',
@@ -174,8 +174,8 @@ export default function Notices() {
           <div 
             style={{
               background: 'var(--bg-surface)',
-              borderRadius: 'var(--radius-md)',
-              maxWidth: '650px',
+              borderRadius: 'var(--radius-lg)',
+              maxWidth: '680px',
               width: '100%',
               boxShadow: 'var(--shadow-lg)',
               overflow: 'hidden',
