@@ -82,8 +82,8 @@ export default function Home({ onOpenAnthem }) {
       {/* =========================================================================
           3. ABOUT THE UNIT SECTION
           ========================================================================= */}
-      <section className="about-page-wrapper" id="about" style={{ padding: '4.5rem 1.25rem 3.5rem' }}>
-        <div className="about-page-container">
+      <section className="page-section page-section-alt" id="about">
+        <div className="container">
           <div className="section-heading-block" style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
             <span className="badge-tag badge-gold" style={{ display: 'inline-block', marginBottom: '0.75rem' }}>
               ABOUT NCC &amp; OUR UNIT
@@ -306,57 +306,79 @@ export default function Home({ onOpenAnthem }) {
             </p>
           </div>
 
-          <div className="grid-3" style={{ marginBottom: '2.5rem' }}>
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--ncc-navy-darkest)', overflow: 'hidden' }}>
+          <div className="home-gallery-preview-grid">
+            <Link to="/gallery" className="home-gallery-card">
+              <div className="home-gallery-card-img-wrap">
+                <span className="home-gallery-card-badge">GUARD OF HONOUR</span>
                 <img 
-                  src="/home.jpg" 
-                  alt="3 Jharkhand CTC NCC Cadet Contingent" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  src="/images/gallery/cadet-sword-salute.jpg" 
+                  alt="Ceremonial Sword Salutation" 
+                  className="home-gallery-card-img"
+                  loading="lazy"
                 />
               </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-navy">UNIT CONTINGENT</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Company Formation</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>The cadet contingent assembled with officers and the unit signboard at BIT Mesra.</p>
+              <div className="home-gallery-card-content">
+                <span className="badge-tag badge-red" style={{ alignSelf: 'flex-start' }}>PARADE &amp; DRILL</span>
+                <h3 className="home-gallery-card-title">Ceremonial Sword Salutation</h3>
+                <p className="home-gallery-card-caption">Contingent Commander calling cadence and rendering the traditional ceremonial sword salute at BIT Mesra.</p>
               </div>
-            </div>
+            </Link>
 
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--bg-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', borderBottom: '1px solid var(--border-light)' }}>
+            <Link to="/gallery" className="home-gallery-card">
+              <div className="home-gallery-card-img-wrap">
+                <span className="home-gallery-card-badge">ARMY AVIATION</span>
                 <img 
-                  src="/ncc-logo.svg" 
-                  alt="Official NCC Crest" 
-                  style={{ maxHeight: '100%', objectFit: 'contain' }}
+                  src="/images/gallery/army-aviation-briefing.jpg" 
+                  alt="Army Aviation Flight Briefing" 
+                  className="home-gallery-card-img"
+                  loading="lazy"
                 />
               </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-navy">UNIT HERALDRY</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>The Crest of Unity</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>Tri-service shield with the 17-lotus wreath and 'एकता और अनुशासन' motto.</p>
+              <div className="home-gallery-card-content">
+                <span className="badge-tag badge-sky" style={{ alignSelf: 'flex-start' }}>AIRFIELD TRAINING</span>
+                <h3 className="home-gallery-card-title">Aviation Flight Briefing</h3>
+                <p className="home-gallery-card-caption">Cadets receiving flight aerodynamics and mission briefing beside an HAL Chetak helicopter.</p>
               </div>
-            </div>
+            </Link>
 
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--ncc-navy-darkest)', overflow: 'hidden' }}>
+            <Link to="/gallery" className="home-gallery-card">
+              <div className="home-gallery-card-img-wrap">
+                <span className="home-gallery-card-badge">DRILL &amp; DISCIPLINE</span>
                 <img 
-                  src="https://bitmesra.ac.in/UploadedDocuments/user_Pratyush_869/Gallery/_large_1882022223555_IMG_2025b6c4dfe1-8be4-45c8-bc0d-a11fcd4f27bc.jpg" 
-                  alt="Ceremonial Guard of Honour" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  onError={(e) => { e.target.src = '/home.jpg'; }}
+                  src="/images/gallery/synchronized-march-past.jpg" 
+                  alt="Synchronized March Past Drill" 
+                  className="home-gallery-card-img"
+                  loading="lazy"
                 />
               </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-red">CEREMONIAL PARADE</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>State Honors</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>Guard of honour presented during Independence Day celebrations at the main ground.</p>
+              <div className="home-gallery-card-content">
+                <span className="badge-tag badge-navy" style={{ alignSelf: 'flex-start' }}>MARCH PAST</span>
+                <h3 className="home-gallery-card-title">Synchronized March Drill</h3>
+                <p className="home-gallery-card-caption">Cadets maintaining laser-straight alignment and arm-swings in tri-color hackles and white gloves.</p>
               </div>
-            </div>
+            </Link>
+
+            <Link to="/gallery" className="home-gallery-card">
+              <div className="home-gallery-card-img-wrap">
+                <span className="home-gallery-card-badge">HEADQUARTERS</span>
+                <img 
+                  src="/images/gallery/battalion-battledress-portrait.jpg" 
+                  alt="Unit Battalion Formal Roll" 
+                  className="home-gallery-card-img"
+                  loading="lazy"
+                />
+              </div>
+              <div className="home-gallery-card-content">
+                <span className="badge-tag badge-gold" style={{ alignSelf: 'flex-start' }}>BATTALION ROLL</span>
+                <h3 className="home-gallery-card-title">Unit Battalion Formal Roll</h3>
+                <p className="home-gallery-card-caption">All cadet ranks assembled in ceremonial battledress outside the 3 JHAR CTC NCC headquarters building.</p>
+              </div>
+            </Link>
           </div>
 
           <div style={{ textAlign: 'center' }}>
             <Link to="/gallery" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              <span>Click for More: View Full Photo Gallery</span>
+              <span>Click for More: View Full 16-Photo Archive</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

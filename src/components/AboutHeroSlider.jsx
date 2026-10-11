@@ -7,9 +7,9 @@ const IMAGES = [
     title: 'Unit Headquarters · BIT Mesra'
   },
   {
-    src: '/images/about/iaf-helicopter-briefing.jpeg',
-    alt: 'Cadets receiving military aviation briefing in front of IAF helicopter',
-    title: 'IAF Aviation Technical Briefing'
+    src: '/images/about/army-aviation-briefing.jpeg',
+    alt: 'Cadets receiving military aviation briefing in front of Army Aviation helicopter',
+    title: 'Army Aviation Core Briefing'
   },
   {
     src: '/images/about/unit-cadets-medals.jpeg',
