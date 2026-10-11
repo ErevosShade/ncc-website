@@ -7,6 +7,7 @@ import NoticeTicker from './components/NoticeTicker';
 import Footer from './components/Footer';
 import AnthemModal from './components/AnthemModal';
 import AudioPlayer from './components/AudioPlayer';
+import DeveloperSignatureModal from './components/DeveloperSignatureModal';
 
 // Exactly 5 Pages
 import Home from './pages/Home';
@@ -30,6 +31,29 @@ function ScrollToTop() {
 
 export default function App() {
   const [anthemOpen, setAnthemOpen] = useState(false);
+  const [signatureOpen, setSignatureOpen] = useState(false);
+
+  // Easter Egg: typing 'erevos' opens the developer signature modal
+  useEffect(() => {
+    let keyBuffer = '';
+    const targetWord = 'erevos';
+
+    const handleKeyDown = (e) => {
+      if (e.key && e.key.length === 1) {
+        keyBuffer += e.key.toLowerCase();
+        if (keyBuffer.length > 20) {
+          keyBuffer = keyBuffer.slice(-20);
+        }
+        if (keyBuffer.endsWith(targetWord)) {
+          setSignatureOpen(true);
+          keyBuffer = '';
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -54,6 +78,7 @@ export default function App() {
 
       <Footer onOpenAnthem={() => setAnthemOpen(true)} />
       <AnthemModal isOpen={anthemOpen} onClose={() => setAnthemOpen(false)} />
+      <DeveloperSignatureModal isOpen={signatureOpen} onClose={() => setSignatureOpen(false)} />
       
       {/* Autoplay Background NCC Anthem Player with Floating Controls */}
       <AudioPlayer />

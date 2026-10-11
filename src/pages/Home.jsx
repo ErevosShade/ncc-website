@@ -63,16 +63,9 @@ export default function Home({ onOpenAnthem }) {
           3. ABOUT THE UNIT SECTION
           ========================================================================= */}
       <section className="page-section" id="about">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '3.5rem', alignItems: 'center' }}>
+        <div className="container about-home-grid">
           <div>
-            <div style={{
-              borderRadius: 'var(--radius-lg)',
-              overflow: 'hidden',
-              border: '2px solid var(--ncc-gold)',
-              boxShadow: 'var(--shadow-md)',
-              background: 'var(--ncc-navy-darkest)',
-              height: '380px'
-            }}>
+            <div className="about-home-img-wrap">
               <img 
                 src="/images/about/unit-hq-bit-mesra.jpeg" 
                 alt="3 Jharkhand Composite Technical Company NCC Unit Headquarters at BIT Mesra" 
