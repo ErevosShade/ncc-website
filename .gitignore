@@ -16,6 +16,10 @@ dist-ssr
 
 *.local
 
+# Legacy root assets
+assets/
+/song.mpeg
+
 # Editor & OS files
 .vscode/*
 !.vscode/extensions.json
