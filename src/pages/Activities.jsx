@@ -1,148 +1,145 @@
-import React, { useState } from 'react';
-
-const activitiesData = [
-  {
-    id: 1,
-    title: "78th Independence Day Ceremonial Parade",
-    date: "15 August 2024",
-    location: "Main Parade Ground, BIT Mesra",
-    category: "national",
-    categoryLabel: "National Occasion",
-    strength: "125 Cadets",
-    description: "Senior Division and Senior Wing cadets presented the ceremonial Guard of Honour to the Vice Chancellor, followed by a march past and weapon drill demonstration.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 2,
-    title: "Puneet Sagar Abhiyan Riverbank Clean-Up",
-    date: "31 August 2024",
-    location: "Subarnarekha River Basin, Ranchi",
-    category: "service",
-    categoryLabel: "Social Service & Ecology",
-    strength: "87 Cadets",
-    description: "Ecological action drive collecting non-biodegradable plastics from riverbanks, raising public awareness on keeping water bodies free of plastic waste.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 3,
-    title: "Kargil Vijay Diwas Marathon & Plantation",
-    date: "26 July 2024",
-    location: "BIT Mesra Campus Circuit",
-    category: "national",
-    categoryLabel: "National Memorial",
-    strength: "All Cadets",
-    description: "Organised a 3 km unit run honoring the heroes of Operation Vijay (1999), concluded by a memorial tree plantation drive planting over 100 saplings.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 4,
-    title: "Swachh Bharat Abhiyan Cleanliness Drive",
-    date: "02 October 2024",
-    location: "Hostel & Academic Grounds, BIT Mesra",
-    category: "service",
-    categoryLabel: "Community Service",
-    strength: "54 Cadets",
-    description: "Gandhi Jayanti institutional cleanliness operation targeting high-density student areas and waste segregation awareness in neighboring rural hamlets.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 5,
-    title: "NCC Raising Day Cyclothon & Cultural Program",
-    date: "24 November 2024",
-    location: "Ranchi Urban & Campus Corridors",
-    category: "service",
-    categoryLabel: "Raising Day",
-    strength: "Unit Contingent",
-    description: "Conducted an awareness cyclothon promoting fitness and drug-free youth lifestyle, followed by an evening cultural integration presentation.",
-    citation: "NCC Directorate Bihar & Jharkhand Bulletin"
-  },
-  {
-    id: 6,
-    title: "Combined Annual Training Camp (CATC)",
-    date: "December 2024",
-    location: "BIT Mesra Parade & Firing Ranges",
-    category: "camp",
-    categoryLabel: "Camp Training",
-    strength: "Full SD/SW Cadre",
-    description: "Intensive 10-day military camp encompassing .22 rifle live firing, map reading exercises, tent pitching, obstacle negotiations, and inter-company sports.",
-    citation: "NCC Directorate Bihar & Jharkhand Official Bulletin"
-  }
-];
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Activities() {
-  const [filter, setFilter] = useState('all');
-
-  const filtered = filter === 'all' 
-    ? activitiesData 
-    : activitiesData.filter(item => item.category === filter);
-
   return (
     <main>
       <section className="page-header-banner">
         <div className="container">
           <h1 className="page-title">Unit Activities Archive</h1>
           <p className="page-subtitle">
-            Documented public outreach records, ceremonial parades, environmental preservation drives, and training deployments conducted by 3 Jharkhand CTC NCC.
+            Birla Institute of Technology, Mesra · 3 Jharkhand Composite Technical Company NCC
           </p>
         </div>
       </section>
 
       <section className="page-section">
-        <div className="container">
-          {/* Filter Bar */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-            <button 
-              className={`btn ${filter === 'all' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setFilter('all')}
-              type="button"
-            >
-              All Records ({activitiesData.length})
-            </button>
-            <button 
-              className={`btn ${filter === 'national' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setFilter('national')}
-              type="button"
-            >
-              National Occasions
-            </button>
-            <button 
-              className={`btn ${filter === 'service' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setFilter('service')}
-              type="button"
-            >
-              Social Service (SSCD)
-            </button>
-            <button 
-              className={`btn ${filter === 'camp' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setFilter('camp')}
-              type="button"
-            >
-              Camps &amp; Drills
-            </button>
+        <div className="container" style={{ maxWidth: '840px', margin: '0 auto' }}>
+          <div className="inst-card" style={{ 
+            padding: '3rem 2rem', 
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
+            border: '2px solid var(--border-medium)',
+            boxShadow: 'var(--shadow-md)'
+          }}>
+            {/* Top Tricolour Stripe */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '4px',
+              background: 'linear-gradient(90deg, var(--ncc-red) 0%, var(--ncc-navy) 50%, var(--ncc-sky) 100%)'
+            }}></div>
+
+            {/* Emblem */}
+            <div style={{
+              width: '100px',
+              height: '100px',
+              margin: '0 auto 1.5rem',
+              background: 'var(--ncc-navy-deep)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '3px solid var(--ncc-gold)',
+              boxShadow: 'var(--shadow-sm)'
+            }}>
+              <img 
+                src="/ncc-logo.svg" 
+                alt="NCC Official Crest" 
+                style={{ width: '60px', height: '60px', objectFit: 'contain' }}
+              />
+            </div>
+
+            {/* Status Badge */}
+            <span className="badge-tag badge-gold" style={{ 
+              margin: '0 auto 1rem', 
+              fontSize: '0.75rem', 
+              padding: '0.35rem 0.85rem',
+              letterSpacing: '0.08em'
+            }}>
+              SECTION UNDER DIGITISATION &amp; COMPILATION
+            </span>
+
+            <h2 style={{ 
+              fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
+              color: 'var(--ncc-navy)', 
+              marginBottom: '1rem',
+              fontFamily: 'var(--font-sans)',
+              fontWeight: 800
+            }}>
+              Archival Records Under Compilation
+            </h2>
+
+            <p style={{ 
+              fontSize: '0.9375rem', 
+              color: 'var(--text-muted)', 
+              lineHeight: 1.7, 
+              maxWidth: '640px', 
+              margin: '0 auto 2rem' 
+            }}>
+              The comprehensive historical and field activity records—covering ceremonial parades, Combined Annual Training Camps (CATC), social service drives (SSCD), and environmental campaigns conducted by <strong>3 Jharkhand Composite Technical Company NCC</strong> at BIT Mesra—are currently being compiled and verified under official unit supervision.
+            </p>
+
+            {/* Information Grid */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '1rem',
+              textAlign: 'left',
+              background: 'var(--bg-subtle)',
+              padding: '1.25rem 1.5rem',
+              borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border-light)',
+              marginBottom: '2rem'
+            }}>
+              <div>
+                <small style={{ fontSize: '0.6875rem', fontWeight: 800, color: 'var(--text-subtle)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Scope</small>
+                <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--ncc-navy)', marginTop: '2px' }}>1956 to Present Field Records</strong>
+              </div>
+              <div>
+                <small style={{ fontSize: '0.6875rem', fontWeight: 800, color: 'var(--text-subtle)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Supervision</small>
+                <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)', marginTop: '2px' }}>Associate NCC Officer (ANO) Office</strong>
+              </div>
+              <div>
+                <small style={{ fontSize: '0.6875rem', fontWeight: 800, color: 'var(--text-subtle)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Authority</small>
+                <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--ncc-red)', marginTop: '2px' }}>BIT Mesra &amp; NCC Dte Bihar &amp; Jharkhand</strong>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div style={{ 
+              display: 'flex', 
+              gap: '0.85rem', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap' 
+            }}>
+              <Link to="/" className="btn btn-navy" style={{ padding: '0.65rem 1.5rem', fontSize: '0.8125rem' }}>
+                Return to Home
+              </Link>
+              <Link to="/notices" className="btn btn-outline" style={{ padding: '0.65rem 1.5rem', fontSize: '0.8125rem' }}>
+                Official Notices →
+              </Link>
+              <Link to="/gallery" className="btn btn-outline" style={{ padding: '0.65rem 1.5rem', fontSize: '0.8125rem' }}>
+                Photo Gallery →
+              </Link>
+            </div>
           </div>
 
-          {/* Activity Cards Grid */}
-          <div className="grid-3">
-            {filtered.map(act => (
-              <div key={act.id} className="inst-card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-                  <span className={`badge-tag ${act.category === 'national' ? 'badge-red' : act.category === 'service' ? 'badge-sky' : 'badge-navy'}`}>
-                    {act.categoryLabel}
-                  </span>
-                  <small style={{ fontWeight: 700, color: 'var(--text-subtle)', fontSize: '0.6875rem' }}>
-                    {act.strength}
-                  </small>
-                </div>
-                <h3>{act.title}</h3>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--ncc-red)', marginBottom: '0.5rem' }}>
-                  {act.date} · {act.location}
-                </div>
-                <p>{act.description}</p>
-                <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.75rem', marginTop: 'auto', fontSize: '0.75rem', color: 'var(--text-subtle)' }}>
-                  Record Ref: {act.citation}
-                </div>
-              </div>
-            ))}
+          {/* Institutional Note */}
+          <div style={{ 
+            marginTop: '2rem', 
+            padding: '1rem 1.25rem', 
+            background: 'var(--bg-subtle)', 
+            borderRadius: 'var(--radius-md)', 
+            border: '1px solid var(--border-light)', 
+            fontSize: '0.8125rem', 
+            color: 'var(--text-muted)',
+            textAlign: 'center'
+          }}>
+            <strong>Official Record Notice:</strong> For urgent historical citations or activity verification for cadet dossiers, please contact the Associate NCC Officer (ANO) at the Student Activity Centre (SAC), BIT Mesra.
           </div>
         </div>
       </section>

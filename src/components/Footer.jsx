@@ -9,9 +9,9 @@ export default function Footer({ onOpenAnthem }) {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
             <img 
-              src="/logo.jpeg" 
+              src="/ncc-logo.svg" 
               alt="NCC Crest" 
-              style={{ width: '48px', height: '48px', objectFit: 'contain', background: '#FFF', borderRadius: '4px', padding: '2px', border: '1px solid var(--ncc-gold)' }} 
+              style={{ width: '48px', height: '48px', objectFit: 'contain' }} 
             />
             <div>
               <strong style={{ fontFamily: 'var(--font-display)', color: '#FFF', display: 'block', fontSize: '1rem' }}>

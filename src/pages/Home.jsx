@@ -3,86 +3,12 @@ import { Link } from 'react-router-dom';
 import AboutHeroSlider from '../components/AboutHeroSlider';
 import AboutSections from '../components/AboutSections';
 
-const activitiesData = [
-  {
-    id: 1,
-    title: "78th Independence Day Ceremonial Parade",
-    date: "15 August 2024",
-    location: "Main Parade Ground, BIT Mesra",
-    category: "national",
-    categoryLabel: "National Occasion",
-    strength: "125 Cadets",
-    description: "Senior Division and Senior Wing cadets presented the ceremonial Guard of Honour to the Vice Chancellor, followed by a march past and weapon drill demonstration.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 2,
-    title: "Puneet Sagar Abhiyan Riverbank Clean-Up",
-    date: "31 August 2024",
-    location: "Subarnarekha River Basin, Ranchi",
-    category: "service",
-    categoryLabel: "Social Service & Ecology",
-    strength: "87 Cadets",
-    description: "Ecological action drive collecting non-biodegradable plastics from riverbanks, raising public awareness on keeping water bodies free of plastic waste.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 3,
-    title: "Kargil Vijay Diwas Marathon & Plantation",
-    date: "26 July 2024",
-    location: "BIT Mesra Campus Circuit",
-    category: "national",
-    categoryLabel: "National Memorial",
-    strength: "All Cadets",
-    description: "Organised a 3 km unit run honoring the heroes of Operation Vijay (1999), concluded by a memorial tree plantation drive planting over 100 saplings.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 4,
-    title: "Swachh Bharat Abhiyan Cleanliness Drive",
-    date: "02 October 2024",
-    location: "Hostel & Academic Grounds, BIT Mesra",
-    category: "service",
-    categoryLabel: "Community Service",
-    strength: "54 Cadets",
-    description: "Gandhi Jayanti institutional cleanliness operation targeting high-density student areas and waste segregation awareness in neighboring rural hamlets.",
-    citation: "BIT Mesra Outreach Activities Report 2024–25"
-  },
-  {
-    id: 5,
-    title: "NCC Raising Day Cyclothon & Cultural Program",
-    date: "24 November 2024",
-    location: "Ranchi Urban & Campus Corridors",
-    category: "service",
-    categoryLabel: "Raising Day",
-    strength: "Unit Contingent",
-    description: "Conducted an awareness cyclothon promoting fitness and drug-free youth lifestyle, followed by an evening cultural integration presentation.",
-    citation: "NCC Directorate Bihar & Jharkhand Bulletin"
-  },
-  {
-    id: 6,
-    title: "Combined Annual Training Camp (CATC)",
-    date: "December 2024",
-    location: "BIT Mesra Parade & Firing Ranges",
-    category: "camp",
-    categoryLabel: "Camp Training",
-    strength: "Full SD/SW Cadre",
-    description: "Intensive 10-day military camp encompassing .22 rifle live firing, map reading exercises, tent pitching, obstacle negotiations, and inter-company sports.",
-    citation: "NCC Directorate Bihar & Jharkhand Official Bulletin"
-  }
-];
-
 export default function Home({ onOpenAnthem }) {
   const [openFaq, setOpenFaq] = useState(null);
-  const [activityFilter, setActivityFilter] = useState('all');
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
-
-  const filteredActivities = activityFilter === 'all'
-    ? activitiesData
-    : activitiesData.filter(act => act.category === activityFilter);
 
   const faqs = [
     {
@@ -112,15 +38,14 @@ export default function Home({ onOpenAnthem }) {
       {/* =========================================================================
           1. HERO COMMAND SECTION
           ========================================================================= */}
-      <section className="page-header-banner" style={{ padding: '4.5rem 0 4rem' }} id="top">
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '3rem', alignItems: 'center' }}>
-          <div>
-            <h1 className="page-title" style={{ fontSize: 'clamp(2.2rem, 4vw, 3.25rem)', lineHeight: 1.15, marginBottom: '1rem' }}>
-              Discipline in Action.<br />
-              <span style={{ color: 'var(--ncc-gold)' }}>Leadership for Life.</span>
+      <section className="hero-home-banner" id="top">
+        <div className="container hero-content-wrap">
+          <div className="hero-text-block">
+            <h1 className="hero-title">
+              3 Jharkhand Composite Technical Company NCC
             </h1>
-            <p className="page-subtitle" style={{ fontSize: '1.05rem', marginBottom: '1.75rem', color: '#E2E8F0' }}>
-              A tradition shaped by service, strengthened by training, and carried forward by the cadets of <strong>3 Jharkhand Composite Technical Company NCC</strong>, Birla Institute of Technology, Mesra, Ranchi.
+            <p className="hero-subtitle">
+              Birla Institute of Technology, Mesra, Ranchi · Under NCC Directorate Bihar &amp; Jharkhand
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <a href="#about" className="btn btn-saffron">
@@ -147,75 +72,12 @@ export default function Home({ onOpenAnthem }) {
               <span>•</span>
               <span>MESRA, RANCHI</span>
               <span>•</span>
-              <span>BIHAR &amp; JHARKHAND DTE</span>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            <div style={{
-              background: 'linear-gradient(145deg, #161852, #0d0e2e)',
-              border: '2px solid rgba(255, 255, 255, 0.15)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '2rem',
-              display: 'inline-block',
-              maxWidth: '380px',
-              width: '100%',
-              boxShadow: 'var(--shadow-lg)'
-            }}>
-              <img 
-                src="/ncc-logo.svg" 
-                alt="National Cadet Corps Crest" 
-                style={{ width: '150px', height: '150px', objectFit: 'contain', margin: '0 auto 1.25rem', filter: 'drop-shadow(0 4px 10px rgba(0,0,0,0.4))' }} 
-              />
-              <strong style={{ display: 'block', color: '#FFF', fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: '1.2rem', letterSpacing: '0.03em' }}>
-                UNITY AND DISCIPLINE
-              </strong>
-              <span className="hindi" style={{ display: 'block', color: '#ffcc00', fontSize: '1.05rem', fontWeight: 700, margin: '4px 0 14px 0' }}>
-                एकता और अनुशासन
-              </span>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '6px', fontSize: '0.72rem', fontWeight: 800 }}>
-                <span style={{ background: 'rgba(239,28,36,0.25)', color: '#ff8a8f', padding: '5px 2px', borderRadius: '3px', border: '1px solid rgba(239,28,36,0.5)' }}>
-                  ARMY
-                </span>
-                <span style={{ background: 'rgba(46,48,146,0.5)', color: '#c0bcff', padding: '5px 2px', borderRadius: '3px', border: '1px solid rgba(46,48,146,0.8)' }}>
-                  NAVY
-                </span>
-                <span style={{ background: 'rgba(0,174,239,0.25)', color: '#82dcff', padding: '5px 2px', borderRadius: '3px', border: '1px solid rgba(0,174,239,0.5)' }}>
-                  AIR FORCE
-                </span>
-              </div>
+              <span>UNITY AND DISCIPLINE</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =========================================================================
-          2. STATS DASHBOARD STRIP (Modeled on indiancc.mygov.in .dashboard .count_wrap)
-          ========================================================================= */}
-      <section className="gov-dashboard-strip" id="stats">
-        <div className="container dashboard-grid">
-          <div className="count-wrap">
-            <span className="count-number">1956</span>
-            <span className="count-title">Raised at Sindri</span>
-            <span className="count-sub">5 January · historical record</span>
-          </div>
-          <div className="count-wrap">
-            <span className="count-number">1957</span>
-            <span className="count-title">Moved to Mesra</span>
-            <span className="count-sub">1 January · BIT chapter</span>
-          </div>
-          <div className="count-wrap">
-            <span className="count-number">03</span>
-            <span className="count-title">Technical Platoons</span>
-            <span className="count-sub">Engineers, Signals &amp; EME</span>
-          </div>
-          <div className="count-wrap">
-            <span className="count-number">200</span>
-            <span className="count-title">Cadet Strength</span>
-            <span className="count-sub">Active SD &amp; SW Contingent</span>
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================================
           3. ABOUT THE UNIT SECTION
@@ -342,128 +204,45 @@ export default function Home({ onOpenAnthem }) {
       </section>
 
       {/* =========================================================================
-          5. TRAINING SECTION (DRILL, FITNESS, FIELDCRAFT, CAMPS)
-          ========================================================================= */}
-      {/* =========================================================================
-          5. TRAINING SECTION (DRILL, FITNESS, FIELDCRAFT, CAMPS)
+          5. TRAINING SECTION (TECHNICAL PLATOONS & MILITARY DISCIPLINE)
           ========================================================================= */}
       <section className="page-section" id="training">
         <div className="container">
           <div className="section-heading-block">
             <h2 className="section-main-title">Training that Shapes More Than a Cadet</h2>
             <p className="section-desc">
-              NCC training builds habits, endurance, and operational capabilities that carry beyond the parade ground and camp.
+              NCC training builds habits, technical endurance, and operational capabilities across three specialized technical platoons.
             </p>
           </div>
 
           <div className="grid-4" style={{ marginBottom: '1.5rem' }}>
             <div className="inst-card">
-              <span className="badge-tag badge-red">DISCIPLINE</span>
-              <h3>Drill &amp; Parade</h3>
-              <p>Foot drill, arms drill, coordination, command words, and ceremonial guard mounting.</p>
-              <span style={{ marginTop: 'auto', fontSize: '0.6875rem', fontWeight: 800, color: 'var(--ncc-red)', letterSpacing: '0.08em' }}>FOUNDATIONS</span>
+              <span className="badge-tag badge-red">CORPS OF ENGINEERS</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.4rem' }}>Field Fortifications</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Field obstacles, expedited bridging concepts, mine-awareness, and defensive construction support.</p>
             </div>
 
             <div className="inst-card">
-              <span className="badge-tag badge-navy">READINESS</span>
-              <h3>Fitness &amp; Endurance</h3>
-              <p>Physical readiness, obstacle clearing, 1.6 km runs, and physical endurance conditioning.</p>
-              <span style={{ marginTop: 'auto', fontSize: '0.6875rem', fontWeight: 800, color: 'var(--ncc-navy)', letterSpacing: '0.08em' }}>PREPAREDNESS</span>
+              <span className="badge-tag badge-navy">CORPS OF SIGNALS</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.4rem' }}>Tactical Telephony</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Line laying, radio telephony procedures, cipher communication basics, and field antenna deployment.</p>
             </div>
 
             <div className="inst-card">
-              <span className="badge-tag badge-sky">FIELDCRAFT</span>
-              <h3>Weapon &amp; Field Skills</h3>
-              <p>Map reading with prismatic compass, .22 rifle marksmanship, target recognition, and camouflage.</p>
-              <span style={{ marginTop: 'auto', fontSize: '0.6875rem', fontWeight: 800, color: 'var(--ncc-sky-dark)', letterSpacing: '0.08em' }}>PRACTICAL LEARNING</span>
+              <span className="badge-tag badge-sky">CORPS OF EME</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.4rem' }}>Technical Equipment</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Electrical &amp; mechanical maintenance, small arms handling, instrument calibration, and recovery drill.</p>
             </div>
 
             <div className="inst-card">
-              <span className="badge-tag badge-gold">TOGETHER</span>
-              <h3>Camps &amp; Teamwork</h3>
-              <p>Combined Annual Training Camps (CATC), Thal Sainik trials, peer leadership, and camaraderie.</p>
-              <span style={{ marginTop: 'auto', fontSize: '0.6875rem', fontWeight: 800, color: 'var(--ncc-gold-dark)', letterSpacing: '0.08em' }}>TEAM SPIRIT</span>
+              <span className="badge-tag badge-gold">ANNUAL CAMPS</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.4rem' }}>CATC &amp; Trials</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Combined Annual Training Camps (CATC), .22 rifle live marksmanship, obstacle courses, and Thal Sainik trials.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* =========================================================================
-          6. ACTIVITIES & HIGHLIGHTS SECTION (WITH LIVE CATEGORY FILTER)
-          ========================================================================= */}
-      <section className="page-section page-section-alt" id="activities">
-        <div className="container">
-          <div className="section-heading-block">
-            <h2 className="section-main-title">Documented Field Activities</h2>
-            <p className="section-desc">
-              Highlights from BIT Mesra and Directorate public records.
-            </p>
-          </div>
-
-          {/* Activity Category Filters */}
-          <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            <button 
-              className={`btn ${activityFilter === 'all' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setActivityFilter('all')}
-              type="button"
-            >
-              All Highlights (06)
-            </button>
-            <button 
-              className={`btn ${activityFilter === 'service' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setActivityFilter('service')}
-              type="button"
-            >
-              Social Service
-            </button>
-            <button 
-              className={`btn ${activityFilter === 'national' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setActivityFilter('national')}
-              type="button"
-            >
-              National Occasions
-            </button>
-            <button 
-              className={`btn ${activityFilter === 'camp' ? 'btn-navy' : 'btn-outline'}`}
-              onClick={() => setActivityFilter('camp')}
-              type="button"
-            >
-              Camps &amp; Drills
-            </button>
-          </div>
-
-          {/* Activities Cards Grid */}
-          <div className="grid-3" style={{ marginBottom: '2.5rem' }}>
-            {filteredActivities.map(act => (
-              <div key={act.id} className="inst-card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-                  <span className={`badge-tag ${act.category === 'national' ? 'badge-red' : act.category === 'service' ? 'badge-sky' : 'badge-navy'}`}>
-                    {act.categoryLabel}
-                  </span>
-                  <small style={{ fontWeight: 800, color: 'var(--text-subtle)', fontSize: '0.6875rem' }}>
-                    {act.strength}
-                  </small>
-                </div>
-                <h3>{act.title}</h3>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--ncc-red)', marginBottom: '0.5rem' }}>
-                  {act.date} · {act.location}
-                </div>
-                <p>{act.description}</p>
-                <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: '0.75rem', marginTop: 'auto', fontSize: '0.75rem', color: 'var(--text-subtle)' }}>
-                  Record Ref: {act.citation}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            <Link to="/activities" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              <span>Click for More: View Dedicated Activities Page</span>
-              <span aria-hidden="true">→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================================
           7. ACHIEVEMENTS & CERTIFICATE EXAMINATION PASSES
@@ -473,7 +252,7 @@ export default function Home({ onOpenAnthem }) {
           <div className="section-heading-block">
             <h2 className="section-main-title">Progress &amp; Certificate Validations</h2>
             <p className="section-desc">
-              Certificate examinations mark an important stage in a cadet's NCC journey. Published records at BIT Mesra verify the following pass counts.
+              Official certificate qualifications awarded under NCC Directorate Bihar &amp; Jharkhand.
             </p>
           </div>
 
@@ -485,8 +264,8 @@ export default function Home({ onOpenAnthem }) {
                   60
                 </span>
               </div>
-              <h3>'B' Certificate Passes</h3>
-              <p>Documented in the Institute's 2024–25 outreach activities report under NCC Directorate Bihar &amp; Jharkhand.</p>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.35rem' }}>'B' Certificate Passes</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Documented in the Institute's 2024–25 outreach activities report under NCC Directorate Bihar &amp; Jharkhand.</p>
             </div>
 
             <div className="inst-card">
@@ -496,8 +275,8 @@ export default function Home({ onOpenAnthem }) {
                   50
                 </span>
               </div>
-              <h3>'C' Certificate Passes</h3>
-              <p>Highest qualification in NCC, granting direct eligibility for the Indian Armed Forces SSB Special Entry Scheme.</p>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.35rem' }}>'C' Certificate Passes</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Highest qualification in NCC, granting direct eligibility for the Indian Armed Forces SSB Special Entry Scheme.</p>
             </div>
           </div>
 
@@ -506,22 +285,24 @@ export default function Home({ onOpenAnthem }) {
             border: '1px solid var(--border-light)',
             padding: '1.25rem 1.5rem',
             borderRadius: 'var(--radius-md)',
-            fontSize: '0.875rem'
+            fontSize: '0.875rem',
+            color: 'var(--text-main)',
+            lineHeight: 1.6
           }}>
-            <strong>SSB Direct Interview Route:</strong> Cadets who pass the 'C' Certificate examination with 'A' or 'B' grade are exempt from the UPSC Combined Defence Services (CDS) written test for the Army (OTA Chennai), Navy, and Air Force.
+            <strong>SSB Direct Interview Route:</strong> Cadets who pass the 'C' Certificate examination with 'A' or 'B' grade are exempt from the UPSC Combined Defence Services (CDS) written examination for the Indian Army (OTA Chennai), Navy, and Air Force, receiving direct call letters for the Services Selection Board (SSB).
           </div>
         </div>
       </section>
 
       {/* =========================================================================
-          8. CADET PHOTO GALLERY (WITH ROUTE TO FULL GALLERY PAGE)
+          8. CADET PHOTO GALLERY PREVIEW
           ========================================================================= */}
       <section className="page-section page-section-alt" id="gallery">
         <div className="container">
           <div className="section-heading-block">
             <h2 className="section-main-title">Archival Moments &amp; Formations</h2>
             <p className="section-desc">
-              Parades, camps, service drives, and shared milestones tell the story better than words alone.
+              Verified photographs documenting parades, ceremonial inspections, and unit heraldry at BIT Mesra.
             </p>
           </div>
 
@@ -605,40 +386,56 @@ export default function Home({ onOpenAnthem }) {
       </section>
 
       {/* =========================================================================
-          9. HOW TO JOIN NCC SECTION (3 STEPS)
+          9. ENROLMENT GUIDELINES (PHYSICAL ON-CAMPUS MODE ONLY)
           ========================================================================= */}
       <section className="page-section" id="join">
         <div className="container">
           <div className="section-heading-block">
-            <h2 className="section-main-title">Enrolment Process &amp; Eligibility</h2>
+            <h2 className="section-main-title">Cadet Enrolment Guidelines</h2>
             <p className="section-desc">
-              NCC offers an opportunity to grow through disciplined military training, teamwork, responsibility, and service.
+              All enrolment selections are conducted physically on-campus at BIT Mesra. This portal is strictly informational and does not process online applications.
             </p>
+          </div>
+
+          <div style={{
+            background: 'var(--bg-subtle)',
+            border: '1px solid var(--border-light)',
+            padding: '1.25rem 1.5rem',
+            borderRadius: 'var(--radius-md)',
+            marginBottom: '2rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem'
+          }}>
+            <span style={{ fontSize: '1.5rem', color: 'var(--ncc-orange)' }}>ℹ</span>
+            <div style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
+              <strong>Notice:</strong> 3 Jharkhand CTC NCC is a regular institutional technical unit. Enrolments are open exclusively to regular 1st-year undergraduate students of BIT Mesra through physical trials at the Student Activity Centre (SAC).
+            </div>
           </div>
 
           <div className="grid-3" style={{ marginBottom: '2.5rem' }}>
             <div className="inst-card">
-              <span className="badge-tag badge-red">STEP 01</span>
-              <h3>Check Current Notices</h3>
-              <p>Look for official enrolment circulars and schedules released by the unit at the start of the academic year.</p>
+              <span className="badge-tag badge-navy">ELIGIBILITY</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Institutional Criteria</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Must be a bona fide regular 1st-year student of BIT Mesra (B.Tech / B.Arch / B.Pharm) with satisfactory medical fitness standards.</p>
             </div>
 
             <div className="inst-card">
-              <span className="badge-tag badge-navy">STEP 02</span>
-              <h3>Confirm Eligibility &amp; PFT</h3>
-              <p>Be a regular 1st-year student at BIT Mesra meeting medical standards and passing physical trials (1.6 km run, push-ups).</p>
+              <span className="badge-tag badge-red">PHYSICAL TRIALS</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Fitness Assessment</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Conducted on the Institute Sports Ground: 1.6 km run, push-ups, sit-ups, and drill aptitude evaluation by Permanent Instructional (PI) staff.</p>
             </div>
 
             <div className="inst-card">
-              <span className="badge-tag badge-sky">STEP 03</span>
-              <h3>Contact the Unit Office</h3>
-              <p>Submit Form I, fee receipt, and identity documents to the Associate NCC Officer (ANO) at SAC.</p>
+              <span className="badge-tag badge-sky">IN-PERSON SUBMISSION</span>
+              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Unit Office at SAC</h3>
+              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Enrolment Form I, medical certificate, and institutional identity proofs are submitted physically to the Associate NCC Officer (ANO) at SAC.</p>
             </div>
           </div>
 
           <div style={{ textAlign: 'center' }}>
-            <Link to="/notices" className="btn btn-saffron" style={{ padding: '0.85rem 2.25rem' }}>
-              Check Enrolment Notices →
+            <Link to="/notices" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
+              View Official Circulars &amp; Notices →
             </Link>
           </div>
         </div>
@@ -652,7 +449,7 @@ export default function Home({ onOpenAnthem }) {
           <div className="section-heading-block" style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
             <h2 className="section-main-title">Frequently Asked Questions</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
-              Essential queries regarding cadet enrolment, drill timings, uniform issue, and defense benefits.
+              Essential information regarding cadet commitments, technical platoons, drill timings, and defence incentives.
             </p>
           </div>
 
@@ -666,8 +463,8 @@ export default function Home({ onOpenAnthem }) {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <strong style={{ fontSize: '0.95rem', color: 'var(--ncc-navy)' }}>{faq.q}</strong>
-                  <span style={{ fontSize: '1.25rem', color: 'var(--ncc-red)', fontWeight: 700, marginLeft: '1rem' }}>
-                    {openFaq === idx ? '−' : '+'}
+                  <span style={{ fontSize: '1.1rem', color: 'var(--ncc-red)', fontWeight: 800, marginLeft: '1rem', flexShrink: 0 }}>
+                    {openFaq === idx ? '▲' : '▼'}
                   </span>
                 </div>
                 {openFaq === idx && (
