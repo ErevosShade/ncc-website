@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AboutHeroSlider from '../components/AboutHeroSlider';
-import AboutSections from '../components/AboutSections';
 
 export default function Home({ onOpenAnthem }) {
   const [openFaq, setOpenFaq] = useState(null);
@@ -47,27 +46,8 @@ export default function Home({ onOpenAnthem }) {
             <p className="hero-subtitle">
               Birla Institute of Technology, Mesra, Ranchi · Under NCC Directorate Bihar &amp; Jharkhand
             </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href="#about" className="btn btn-saffron">
-                Discover Our Unit ↓
-              </a>
-              <a href="#history" className="btn btn-outline" style={{ color: '#FFF', borderColor: 'rgba(255,255,255,0.4)' }}>
-                Timeline of Journey ↓
-              </a>
-              <Link to="/about" className="btn btn-navy" style={{ background: '#1c1e69', border: '1px solid rgba(255,255,255,0.2)' }}>
-                About Us →
-              </Link>
-              <button 
-                onClick={onOpenAnthem} 
-                className="btn btn-outline" 
-                style={{ color: '#FFF', borderColor: 'rgba(255,255,255,0.4)' }}
-                type="button"
-              >
-                ♫ Song of NCC
-              </button>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '2rem', fontSize: '0.75rem', color: '#94A3B8', fontWeight: 700, letterSpacing: '0.08em' }}>
-              <span style={{ width: '28px', height: '2px', background: 'var(--ncc-orange)' }}></span>
+            <div className="hero-meta-strip">
+              <span className="hero-meta-dot"></span>
               <span>ESTABLISHED 1956</span>
               <span>•</span>
               <span>MESRA, RANCHI</span>
@@ -82,23 +62,67 @@ export default function Home({ onOpenAnthem }) {
       {/* =========================================================================
           3. ABOUT THE UNIT SECTION
           ========================================================================= */}
-      <section className="about-page-wrapper" id="about" style={{ padding: '4.5rem 1.25rem 3.5rem' }}>
-        <div className="about-page-container">
-          <div className="section-heading-block" style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
-            <span className="badge-tag badge-gold" style={{ display: 'inline-block', marginBottom: '0.75rem' }}>
-              ABOUT NCC &amp; OUR UNIT
-            </span>
-            <h2 className="section-main-title">Leadership, Purpose &amp; Service</h2>
-            <p className="section-desc" style={{ margin: '0 auto' }}>
-              Official establishment aims, heraldic symbols, motto, and song of 3 Jharkhand Composite Technical Company NCC, BIT Mesra.
-            </p>
+      <section className="page-section" id="about">
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: '0.9fr 1.1fr', gap: '3.5rem', alignItems: 'center' }}>
+          <div>
+            <div style={{
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              border: '2px solid var(--ncc-gold)',
+              boxShadow: 'var(--shadow-md)',
+              background: 'var(--ncc-navy-darkest)',
+              height: '380px'
+            }}>
+              <img 
+                src="/images/about/unit-hq-bit-mesra.jpeg" 
+                alt="3 Jharkhand Composite Technical Company NCC Unit Headquarters at BIT Mesra" 
+                style={{ 
+                  width: '100%', 
+                  height: '100%', 
+                  objectFit: 'cover', 
+                  display: 'block' 
+                }} 
+              />
+            </div>
           </div>
 
-          {/* 3D Carousel with 4 WhatsApp Photos */}
-          <AboutHeroSlider />
+          <div>
+            <h2 className="section-main-title">A legacy built on purpose and service.</h2>
+            <p className="section-desc" style={{ marginBottom: '1rem' }}>
+              NCC at BIT Mesra is part of a wider national movement that encourages young citizens to become disciplined, confident, and service-minded leaders.
+            </p>
+            <p style={{ fontSize: '0.875rem', color: 'var(--text-muted)', lineHeight: 1.7, marginBottom: '1.5rem' }}>
+              The unit's own history reaches back to January 1956, when it was raised at Sindri as an EME section. It moved to Mesra in January 1957, then evolved through several technical formations before taking its present Jharkhand designation.
+            </p>
 
-          {/* Screenshot Sections (Aim, Motto, Flag, Song) */}
-          <AboutSections onOpenAnthem={onOpenAnthem} />
+            <div style={{ display: 'grid', gap: '0.875rem', marginBottom: '1.75rem' }}>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                <span style={{ color: 'var(--ncc-red)', fontWeight: 800 }}>✓</span>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Discipline with Purpose</strong>
+                  <small style={{ color: 'var(--text-subtle)' }}>Personal responsibility, military coordination, and commitment.</small>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                <span style={{ color: 'var(--ncc-navy)', fontWeight: 800 }}>✓</span>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Learning by Doing</strong>
+                  <small style={{ color: 'var(--text-subtle)' }}>Parade training, fieldcraft, weapon handling, camps, and practical exercises.</small>
+                </div>
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+                <span style={{ color: 'var(--ncc-sky-dark)', fontWeight: 800 }}>✓</span>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '0.875rem', color: 'var(--text-main)' }}>Service Beyond Campus</strong>
+                  <small style={{ color: 'var(--text-subtle)' }}>Participation in national initiatives, disaster response, and river conservation.</small>
+                </div>
+              </div>
+            </div>
+
+            <a href="#history" className="btn btn-navy">
+              Read Our Full Journey ↓
+            </a>
+          </div>
         </div>
       </section>
 
@@ -195,8 +219,8 @@ export default function Home({ onOpenAnthem }) {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-            <Link to="/about" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              <span>Click for More: View Dedicated About Us Page</span>
+            <Link to="/history" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
+              <span>Click for More: View Dedicated Legacy &amp; History Page</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>
@@ -244,117 +268,26 @@ export default function Home({ onOpenAnthem }) {
       </section>
 
 
-      {/* =========================================================================
-          7. ACHIEVEMENTS & CERTIFICATE EXAMINATION PASSES
-          ========================================================================= */}
-      <section className="page-section" id="achievements">
-        <div className="container">
-          <div className="section-heading-block">
-            <h2 className="section-main-title">Progress &amp; Certificate Validations</h2>
-            <p className="section-desc">
-              Official certificate qualifications awarded under NCC Directorate Bihar &amp; Jharkhand.
-            </p>
-          </div>
-
-          <div className="grid-2" style={{ marginBottom: '2rem' }}>
-            <div className="inst-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
-                <span className="badge-tag badge-gold">2025 · REPORTED</span>
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '2.5rem', fontWeight: 800, color: 'var(--ncc-navy)', lineHeight: 1 }}>
-                  60
-                </span>
-              </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.35rem' }}>'B' Certificate Passes</h3>
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Documented in the Institute's 2024–25 outreach activities report under NCC Directorate Bihar &amp; Jharkhand.</p>
-            </div>
-
-            <div className="inst-card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
-                <span className="badge-tag badge-red">2024 · REPORTED</span>
-                <span style={{ fontFamily: 'var(--font-sans)', fontSize: '2.5rem', fontWeight: 800, color: 'var(--ncc-red)', lineHeight: 1 }}>
-                  50
-                </span>
-              </div>
-              <h3 style={{ fontSize: '1.2rem', marginBottom: '0.35rem' }}>'C' Certificate Passes</h3>
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Highest qualification in NCC, granting direct eligibility for the Indian Armed Forces SSB Special Entry Scheme.</p>
-            </div>
-          </div>
-
-          <div style={{
-            background: 'var(--bg-subtle)',
-            border: '1px solid var(--border-light)',
-            padding: '1.25rem 1.5rem',
-            borderRadius: 'var(--radius-md)',
-            fontSize: '0.875rem',
-            color: 'var(--text-main)',
-            lineHeight: 1.6
-          }}>
-            <strong>SSB Direct Interview Route:</strong> Cadets who pass the 'C' Certificate examination with 'A' or 'B' grade are exempt from the UPSC Combined Defence Services (CDS) written examination for the Indian Army (OTA Chennai), Navy, and Air Force, receiving direct call letters for the Services Selection Board (SSB).
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================================
-          8. CADET PHOTO GALLERY PREVIEW
+          8. CADET PHOTO GALLERY PREVIEW (INTERACTIVE SLIDER)
           ========================================================================= */}
       <section className="page-section page-section-alt" id="gallery">
         <div className="container">
-          <div className="section-heading-block">
-            <h2 className="section-main-title">Archival Moments &amp; Formations</h2>
-            <p className="section-desc">
-              Verified photographs documenting parades, ceremonial inspections, and unit heraldry at BIT Mesra.
+          <div className="section-heading-block" style={{ textAlign: 'center', maxWidth: '750px', margin: '0 auto 2.5rem' }}>
+            <span className="badge-tag badge-navy" style={{ display: 'inline-block', marginBottom: '0.5rem' }}>
+              CADET GLIMPSES &amp; GALLERY
+            </span>
+            <h2 className="section-main-title">Moments &amp; Formations in Focus</h2>
+            <p className="section-desc" style={{ margin: '0 auto' }}>
+              Interactive showcase of unit headquarters, aviation briefings, cadet honors, and field training sessions at BIT Mesra.
             </p>
           </div>
 
-          <div className="grid-3" style={{ marginBottom: '2.5rem' }}>
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--ncc-navy-darkest)', overflow: 'hidden' }}>
-                <img 
-                  src="/home.jpg" 
-                  alt="3 Jharkhand CTC NCC Cadet Contingent" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-navy">UNIT CONTINGENT</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Company Formation</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>The cadet contingent assembled with officers and the unit signboard at BIT Mesra.</p>
-              </div>
-            </div>
+          {/* Interactive 3D Gallery Slider */}
+          <AboutHeroSlider />
 
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--bg-subtle)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', borderBottom: '1px solid var(--border-light)' }}>
-                <img 
-                  src="/ncc-logo.svg" 
-                  alt="Official NCC Crest" 
-                  style={{ maxHeight: '100%', objectFit: 'contain' }}
-                />
-              </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-navy">UNIT HERALDRY</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>The Crest of Unity</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>Tri-service shield with the 17-lotus wreath and 'एकता और अनुशासन' motto.</p>
-              </div>
-            </div>
-
-            <div className="inst-card" style={{ padding: 0, overflow: 'hidden' }}>
-              <div style={{ height: '220px', background: 'var(--ncc-navy-darkest)', overflow: 'hidden' }}>
-                <img 
-                  src="https://bitmesra.ac.in/UploadedDocuments/user_Pratyush_869/Gallery/_large_1882022223555_IMG_2025b6c4dfe1-8be4-45c8-bc0d-a11fcd4f27bc.jpg" 
-                  alt="Ceremonial Guard of Honour" 
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  onError={(e) => { e.target.src = '/home.jpg'; }}
-                />
-              </div>
-              <div style={{ padding: '1.25rem' }}>
-                <span className="badge-tag badge-red">CEREMONIAL PARADE</span>
-                <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>State Honors</h3>
-                <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>Guard of honour presented during Independence Day celebrations at the main ground.</p>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <Link to="/gallery" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
               <span>Click for More: View Full Photo Gallery</span>
               <span aria-hidden="true">→</span>
@@ -363,61 +296,6 @@ export default function Home({ onOpenAnthem }) {
         </div>
       </section>
 
-      {/* =========================================================================
-          9. ENROLMENT GUIDELINES (PHYSICAL ON-CAMPUS MODE ONLY)
-          ========================================================================= */}
-      <section className="page-section" id="join">
-        <div className="container">
-          <div className="section-heading-block">
-            <h2 className="section-main-title">Cadet Enrolment Guidelines</h2>
-            <p className="section-desc">
-              All enrolment selections are conducted physically on-campus at BIT Mesra. This portal is strictly informational and does not process online applications.
-            </p>
-          </div>
-
-          <div style={{
-            background: 'var(--bg-subtle)',
-            border: '1px solid var(--border-light)',
-            padding: '1.25rem 1.5rem',
-            borderRadius: 'var(--radius-md)',
-            marginBottom: '2rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1rem'
-          }}>
-            <span style={{ fontSize: '1.5rem', color: 'var(--ncc-orange)' }}>ℹ</span>
-            <div style={{ fontSize: '0.875rem', color: 'var(--text-main)', lineHeight: 1.5 }}>
-              <strong>Notice:</strong> 3 Jharkhand CTC NCC is a regular institutional technical unit. Enrolments are open exclusively to regular 1st-year undergraduate students of BIT Mesra through physical trials at the Student Activity Centre (SAC).
-            </div>
-          </div>
-
-          <div className="grid-3" style={{ marginBottom: '2.5rem' }}>
-            <div className="inst-card">
-              <span className="badge-tag badge-navy">ELIGIBILITY</span>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Institutional Criteria</h3>
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Must be a bona fide regular 1st-year student of BIT Mesra (B.Tech / B.Arch / B.Pharm) with satisfactory medical fitness standards.</p>
-            </div>
-
-            <div className="inst-card">
-              <span className="badge-tag badge-red">PHYSICAL TRIALS</span>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Fitness Assessment</h3>
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Conducted on the Institute Sports Ground: 1.6 km run, push-ups, sit-ups, and drill aptitude evaluation by Permanent Instructional (PI) staff.</p>
-            </div>
-
-            <div className="inst-card">
-              <span className="badge-tag badge-sky">IN-PERSON SUBMISSION</span>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '0.35rem' }}>Unit Office at SAC</h3>
-              <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', lineHeight: 1.6 }}>Enrolment Form I, medical certificate, and institutional identity proofs are submitted physically to the Associate NCC Officer (ANO) at SAC.</p>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'center' }}>
-            <Link to="/notices" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              View Official Circulars &amp; Notices →
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* =========================================================================
           10. FREQUENTLY ASKED QUESTIONS (FAQ ACCORDION)

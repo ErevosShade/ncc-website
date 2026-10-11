@@ -46,9 +46,6 @@ export default function Navbar() {
           <NavLink to="/gallery" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             Gallery
           </NavLink>
-          <Link to="/notices" className="nav-cta" onClick={closeMobile}>
-            Notices
-          </Link>
         </nav>
       </div>
     </header>
