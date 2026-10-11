@@ -5,6 +5,7 @@ export default function AboutSections({ onOpenAnthem }) {
     <>
       {/* 1. Aim of NCC */}
       <section className="about-card about-card-maroon" aria-labelledby="aim-heading">
+        <span className="badge-tag badge-gold">CORE PURPOSE &amp; AIMS</span>
         <h2 id="aim-heading" className="about-card-title">Aim of NCC</h2>
         <p className="about-card-text">
           The ‘Aims’ of the NCC laid out in 1988 have stood the test of time and continue to meet the requirements expected of it in the current socio–economic scenario of the country. The NCC aims at developing character, comradeship, discipline, a secular outlook, the spirit of adventure and ideals of selfless service amongst young citizens. Further, it aims at creating a pool of organized, trained and motivated youth with leadership qualities in all walks of life, who will serve the Nation regardless of which career they choose. Needless to say, the NCC also provides an environment conducive to motivating young Indians to join the armed forces.
@@ -13,6 +14,7 @@ export default function AboutSections({ onOpenAnthem }) {
 
       {/* 2. Our Motto */}
       <section className="about-card about-card-white" aria-labelledby="motto-heading">
+        <span className="badge-tag badge-navy">CORPS MOTTO</span>
         <h2 id="motto-heading" className="about-card-title">Our Motto</h2>
         <p className="about-card-text">
           The need for having motto for the Corps was discussed in the 11th Central Advisory Committee (CAC) meeting held on 11 Aug 1978. The mottos suggested were "Duty and Discipline"; "Duty, Unity and Discipline"; "Duty and Unity"; "Unity and Discipline". The final decision for selection of "Unity and Discipline" as motto for the NCC was taken in the 12th CAC meeting held on 12 Oct 1980.
@@ -21,6 +23,7 @@ export default function AboutSections({ onOpenAnthem }) {
 
       {/* 3. NCC Flag */}
       <section className="about-card about-card-white" aria-labelledby="flag-heading">
+        <span className="badge-tag badge-red">TRI-SERVICE EMBLEM</span>
         <h2 id="flag-heading" className="about-card-title">NCC Flag</h2>
         <div className="about-flag-content">
           <p className="about-card-text">
@@ -41,6 +44,7 @@ export default function AboutSections({ onOpenAnthem }) {
 
       {/* 4. NCC Song */}
       <section className="about-card about-card-maroon" aria-labelledby="song-heading">
+        <span className="badge-tag badge-gold">OFFICIAL ANTHEM</span>
         <div className="about-song-header">
           <div>
             <h2 id="song-heading" className="about-card-title">NCC Song</h2>

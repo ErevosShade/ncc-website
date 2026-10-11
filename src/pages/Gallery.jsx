@@ -57,16 +57,23 @@ export default function Gallery() {
 
   return (
     <main>
+      {/* 1. Official Header Banner */}
       <section className="page-header-banner">
         <div className="container">
-          <h1 className="page-title">Cadet Photo Archive</h1>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+            <span className="badge-tag badge-gold">3 JHARKHAND COMPO TECH COY NCC</span>
+            <span style={{ color: 'var(--ncc-gold)', fontSize: '0.75rem', fontWeight: 600 }}>•</span>
+            <span style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '0.75rem', fontWeight: 600 }}>BIT MESRA RANCHI</span>
+          </div>
+          <h1 className="page-title">Cadet Photo Archive &amp; Field Records</h1>
           <p className="page-subtitle">
             Visual record of ceremonial parades, camp deployments, Guard of Honour formations, and technical training conducted by 3 Jharkhand CTC NCC at BIT Mesra.
           </p>
         </div>
       </section>
 
-      <section className="page-section">
+      {/* 2. Telemetry Stats Strip */}
+      <section className="gallery-stats-strip" aria-label="Archive Statistics">
         <div className="container">
           {/* Category Filter Pills */}
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
@@ -104,6 +111,15 @@ export default function Gallery() {
                     }}
                     onError={(e) => { e.target.src = '/ncc-logo.svg'; }}
                   />
+                  {searchQuery && (
+                    <button 
+                      className="gallery-search-clear"
+                      onClick={() => setSearchQuery('')}
+                      aria-label="Clear search"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
                 <div style={{ padding: '1.25rem' }}>
                   <span className="badge-tag badge-navy">{item.category}</span>
@@ -111,7 +127,12 @@ export default function Gallery() {
                   <p style={{ fontSize: '0.8125rem', margin: 0, color: 'var(--text-muted)' }}>{item.caption}</p>
                 </div>
               </div>
-            ))}
+            </div>
+          </div>
+
+          {/* Results count live region */}
+          <div style={{ fontSize: '0.8125rem', color: 'var(--text-subtle)', marginBottom: '0.75rem', fontWeight: 500 }} aria-live="polite">
+            Showing {filteredItems.length} of {galleryItems.length} archival dispatches
           </div>
 
           <div style={{ marginTop: '2.5rem', padding: '1.25rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
@@ -165,8 +186,105 @@ export default function Gallery() {
                 className="btn btn-navy"
                 style={{ padding: '0.45rem 1rem', fontSize: '0.8125rem', whiteSpace: 'nowrap', marginLeft: '1rem' }}
               >
-                Close ✕
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>Original</span>
+              </a>
+
+              <button
+                className="lightbox-action-btn lightbox-close-btn"
+                onClick={closeLightbox}
+                title="Close Lightbox (Esc)"
+                aria-label="Close Lightbox"
+              >
+                ✕ Esc
               </button>
+            </div>
+          </div>
+
+          {/* Lightbox Stage */}
+          <div className="lightbox-stage" onClick={(e) => e.stopPropagation()}>
+            {/* Prev Button */}
+            <button
+              className="lightbox-nav-btn prev"
+              onClick={prevLightboxImg}
+              title="Previous photo (Arrow Left)"
+              aria-label="Previous photograph"
+            >
+              ‹
+            </button>
+
+            {/* Main Image */}
+            <div className={`lightbox-img-wrapper ${isZoomed ? 'zoomed' : ''}`}>
+              <img
+                src={currentItem.src}
+                alt={currentItem.title}
+                className="lightbox-main-img"
+                onClick={() => setIsZoomed(!isZoomed)}
+                onError={(e) => { e.currentTarget.src = '/ncc-logo.svg'; }}
+              />
+            </div>
+
+            {/* Next Button */}
+            <button
+              className="lightbox-nav-btn next"
+              onClick={nextLightboxImg}
+              title="Next photo (Arrow Right)"
+              aria-label="Next photograph"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Lightbox Footer & Filmstrip */}
+          <div className="lightbox-footer" onClick={(e) => e.stopPropagation()}>
+            <div className="lightbox-info-row">
+              <div className="lightbox-caption-box">
+                <h2 className="lightbox-caption-title">{currentItem.title}</h2>
+                <p className="lightbox-caption-text">{currentItem.caption}</p>
+                <div className="lightbox-caption-meta">
+                  <span>📍 {currentItem.location}</span>
+                  <span>•</span>
+                  <span>TAG: {currentItem.tag}</span>
+                  <span>•</span>
+                  <span>YEAR: {currentItem.year}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Thumbnail Filmstrip */}
+            <div
+              className="lightbox-filmstrip-strip"
+              ref={filmstripRef}
+              role="tablist"
+              aria-label="Photograph Filmstrip"
+            >
+              {galleryItems.map((thumb, idx) => (
+                <button
+                  key={thumb.id}
+                  className={`lightbox-thumb-btn ${idx === lightboxIndex ? 'active' : ''}`}
+                  onClick={() => {
+                    setLightboxIndex(idx);
+                    setIsZoomed(false);
+                    setIsCopied(false);
+                  }}
+                  title={thumb.title}
+                  aria-label={`Jump to ${thumb.title}`}
+                  role="tab"
+                  aria-selected={idx === lightboxIndex}
+                >
+                  <img
+                    src={thumb.src}
+                    alt={thumb.title}
+                    className="lightbox-thumb-img"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.src = '/ncc-logo.svg'; }}
+                  />
+                </button>
+              ))}
             </div>
           </div>
         </div>
