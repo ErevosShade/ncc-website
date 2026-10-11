@@ -282,7 +282,7 @@ export default function Home({ onOpenAnthem }) {
 
           <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
             <Link to="/gallery" className="btn btn-navy" style={{ padding: '0.85rem 2.25rem' }}>
-              <span>Click for More: View Full 16-Photo Archive</span>
+              <span>Click for More: View Full Cadet Photo Archive</span>
               <span aria-hidden="true">→</span>
             </Link>
           </div>

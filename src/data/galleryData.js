@@ -1,26 +1,26 @@
 export const galleryCategories = [
   { id: 'all', label: 'All Dispatches' },
+  { id: 'honors', label: 'Honors & Formations' },
   { id: 'parade', label: 'Parade & Drill' },
   { id: 'aviation', label: 'Aviation & Field' },
   { id: 'camp', label: 'Camp Life' },
-  { id: 'honors', label: 'Honors & Formations' },
   { id: 'outreach', label: 'Community Outreach' }
 ];
 
 export const galleryItems = [
   {
     id: 1,
-    slug: 'cadet-sword-salute',
-    title: 'Ceremonial Sword Salutation',
-    category: 'parade',
-    categoryLabel: 'Parade & Drill',
-    tag: 'GUARD OF HONOUR',
-    src: '/images/gallery/cadet-sword-salute.jpg',
+    slug: 'merit-certificate-presentation',
+    title: 'Certificate of Merit Presentation',
+    category: 'honors',
+    categoryLabel: 'Honors & Formations',
+    tag: 'MERIT CITATION',
+    src: '/images/gallery/merit-certificate-presentation.jpg',
     aspect: 'portrait',
     gridSpan: 'card-tall',
     featured: true,
-    caption: 'Contingent Commander calling cadence and rendering the traditional ceremonial sword salute during the annual parade inspection at BIT Mesra.',
-    location: 'Main Parade Grounds, BIT Mesra',
+    caption: 'Cadet receiving the prestigious Unit Certificate of Merit (प्रशंसा पत्र) from Institute leadership and Army PI Staff under the Aims of NCC board at BIT Mesra.',
+    location: 'Unit Headquarters Plaza, BIT Mesra',
     year: '2026',
     unit: '3 JHAR CTC NCC'
   },
@@ -42,22 +42,6 @@ export const galleryItems = [
   },
   {
     id: 3,
-    slug: 'battalion-battledress-portrait',
-    title: 'Unit Battalion Formal Roll',
-    category: 'honors',
-    categoryLabel: 'Honors & Formations',
-    tag: 'BATTALION ROLL',
-    src: '/images/gallery/battalion-battledress-portrait.jpg',
-    aspect: 'landscape',
-    gridSpan: 'card-wide',
-    featured: true,
-    caption: 'All cadet ranks assembled in ceremonial battledress outside the 3 Jharkhand Compo Tech Coy Headquarters with Associate NCC Officer and PI instructional staff.',
-    location: 'Unit Coy Headquarters, BIT Mesra',
-    year: '2026',
-    unit: '3 JHAR CTC NCC'
-  },
-  {
-    id: 4,
     slug: 'synchronized-march-past',
     title: 'Synchronized March Past Drill',
     category: 'parade',
@@ -73,7 +57,7 @@ export const galleryItems = [
     unit: 'Senior Division Platoon'
   },
   {
-    id: 5,
+    id: 4,
     slug: 'championship-unit-pennant',
     title: 'Championship Pennant & Honors',
     category: 'honors',
@@ -89,7 +73,39 @@ export const galleryItems = [
     unit: '3 JHAR CTC NCC'
   },
   {
+    id: 5,
+    slug: 'cadet-sword-salute',
+    title: 'Ceremonial Sword Salutation',
+    category: 'parade',
+    categoryLabel: 'Parade & Drill',
+    tag: 'GUARD OF HONOUR',
+    src: '/images/gallery/cadet-sword-salute.jpg',
+    aspect: 'portrait',
+    gridSpan: 'card-tall',
+    featured: true,
+    caption: 'Contingent Commander calling cadence and rendering the traditional ceremonial sword salute during the annual parade inspection at BIT Mesra.',
+    location: 'Main Parade Grounds, BIT Mesra',
+    year: '2026',
+    unit: '3 JHAR CTC NCC'
+  },
+  {
     id: 6,
+    slug: 'battalion-battledress-portrait',
+    title: 'Unit Battalion Formal Roll',
+    category: 'honors',
+    categoryLabel: 'Honors & Formations',
+    tag: 'BATTALION ROLL',
+    src: '/images/gallery/battalion-battledress-portrait.jpg',
+    aspect: 'landscape',
+    gridSpan: 'card-wide',
+    featured: true,
+    caption: 'All cadet ranks assembled in ceremonial battledress outside the 3 Jharkhand Compo Tech Coy Headquarters with Associate NCC Officer and PI instructional staff.',
+    location: 'Unit Coy Headquarters, BIT Mesra',
+    year: '2026',
+    unit: '3 JHAR CTC NCC'
+  },
+  {
+    id: 7,
     slug: 'platoon-inspection-swords',
     title: 'National Day Parade Review',
     category: 'parade',
@@ -105,7 +121,7 @@ export const galleryItems = [
     unit: 'Combined SD/SW Contingent'
   },
   {
-    id: 7,
+    id: 8,
     slug: 'cadet-victory-celebration',
     title: 'Cadet Victory Camaraderie',
     category: 'camp',
@@ -121,7 +137,7 @@ export const galleryItems = [
     unit: '3 JHAR CTC NCC'
   },
   {
-    id: 8,
+    id: 9,
     slug: 'archival-contingent-inspection',
     title: 'Archival Monochrome Inspection',
     category: 'parade',
@@ -137,7 +153,7 @@ export const galleryItems = [
     unit: 'Photographic Society Archives'
   },
   {
-    id: 9,
+    id: 10,
     slug: 'tri-service-trophy-ceremony',
     title: 'Tri-Service Camp Awards Night',
     category: 'camp',
@@ -153,7 +169,7 @@ export const galleryItems = [
     unit: 'Tri-Service Composite Wing'
   },
   {
-    id: 10,
+    id: 11,
     slug: 'corps-tactical-lecture',
     title: 'Field Tactics & Communications',
     category: 'aviation',
@@ -169,7 +185,7 @@ export const galleryItems = [
     unit: 'Corps of Signals / 3 JHAR'
   },
   {
-    id: 11,
+    id: 12,
     slug: 'full-contingent-parade-ground',
     title: 'Full Contingent Parade Roll',
     category: 'parade',
@@ -185,7 +201,7 @@ export const galleryItems = [
     unit: '3 JHAR CTC NCC'
   },
   {
-    id: 12,
+    id: 13,
     slug: 'cadet-tug-of-war-competition',
     title: 'Inter-Company Tug-of-War',
     category: 'camp',
@@ -201,7 +217,7 @@ export const galleryItems = [
     unit: 'Inter-Company Challenge'
   },
   {
-    id: 13,
+    id: 14,
     slug: 'unit-hq-assembled-ranks',
     title: 'Unit Headquarters Assembly',
     category: 'honors',
@@ -217,7 +233,7 @@ export const galleryItems = [
     unit: '3 JHAR CTC NCC'
   },
   {
-    id: 14,
+    id: 15,
     slug: 'road-safety-awareness-rally',
     title: 'Drive Safe Campus Outreach',
     category: 'outreach',
@@ -233,7 +249,7 @@ export const galleryItems = [
     unit: 'SSCD Wing, BIT Mesra'
   },
   {
-    id: 15,
+    id: 16,
     slug: 'cadet-morning-muster',
     title: 'Physical Training Morning Muster',
     category: 'camp',
@@ -249,7 +265,7 @@ export const galleryItems = [
     unit: 'Cadet Battalion Ranks'
   },
   {
-    id: 16,
+    id: 17,
     slug: 'unit-coy-courtyard-honors',
     title: 'Headquarters Merit Presentation',
     category: 'honors',

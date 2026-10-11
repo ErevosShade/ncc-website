@@ -176,7 +176,7 @@ export default function Gallery() {
         <div className="container">
           <div className="gallery-stats-grid">
             <div className="gallery-stat-item">
-              <span className="gallery-stat-num">16</span>
+              <span className="gallery-stat-num">{galleryItems.length}</span>
               <span className="gallery-stat-lbl">Archival Photographs</span>
             </div>
             <div className="gallery-stat-item">
