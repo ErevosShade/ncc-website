@@ -56,6 +56,14 @@ export default function AnthemModal({ isOpen, onClose }) {
         </div>
 
         <div style={{ padding: '1.5rem', maxHeight: '70vh', overflowY: 'auto' }}>
+          <div style={{ marginBottom: '1.25rem' }}>
+            <audio 
+              src="/audio/song.mpeg" 
+              controls 
+              style={{ width: '100%', height: '40px', borderRadius: '4px' }}
+            />
+          </div>
+
           <p className="hindi" style={{
             fontSize: '1.05rem',
             lineHeight: 2.1,

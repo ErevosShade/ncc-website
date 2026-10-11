@@ -5,7 +5,6 @@ export default function LegacyHistory() {
     <main>
       <section className="page-header-banner">
         <div className="container">
-          <span className="page-eyebrow">CHRONICLES &amp; HERITAGE SINCE 1956</span>
           <h1 className="page-title">Legacy &amp; History</h1>
           <p className="page-subtitle">
             The historic lineage of 3 Jharkhand Composite Technical Company NCC — tracing over 68 years of military leadership, technical training, and institutional discipline at Birla Institute of Technology, Mesra.
@@ -17,8 +16,7 @@ export default function LegacyHistory() {
       <section className="page-section">
         <div className="container">
           <div className="section-heading-block">
-            <span className="section-kicker">CHRONOLOGICAL EVOLUTION</span>
-            <h2 className="section-main-title">Six Chapters of Transformation</h2>
+            <h2 className="section-main-title">Chronological Evolution &amp; Transformation</h2>
             <p className="section-desc">
               Compiled from official establishment orders and archival “Brief History” records preserved at BIT Mesra and NCC Directorate Bihar &amp; Jharkhand.
             </p>
@@ -81,7 +79,6 @@ export default function LegacyHistory() {
       <section className="page-section page-section-alt">
         <div className="container">
           <div className="section-heading-block">
-            <span className="section-kicker">HERALDRY &amp; IDENTITY</span>
             <h2 className="section-main-title">The National Cadet Corps Crest</h2>
             <p className="section-desc">
               Introduced nationally in 1954, the NCC Crest carries specific heraldic symbols representing joint-service commitment and nationhood.
@@ -119,7 +116,6 @@ export default function LegacyHistory() {
       <section className="page-section">
         <div className="container">
           <div className="section-heading-block">
-            <span className="section-kicker">TECHNICAL SPECIALIZATION</span>
             <h2 className="section-main-title">The Three Technical Platoons</h2>
             <p className="section-desc">
               The composite technical character of 3 Jharkhand CTC provides engineering scholars with practical training aligned with military technical arms.

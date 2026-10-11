@@ -67,7 +67,6 @@ export default function Notices() {
     <main>
       <section className="page-header-banner">
         <div className="container">
-          <span className="page-eyebrow">OFFICIAL UNIT NOTICES &amp; ORDERS</span>
           <h1 className="page-title">Unit Notices &amp; Circulars</h1>
           <p className="page-subtitle">
             Authorised announcements, examination schedules, movement orders, and recruitment circulars issued by 3 Jharkhand Composite Technical Company NCC and higher headquarters.
@@ -147,7 +146,7 @@ export default function Notices() {
             background: 'var(--bg-subtle)',
             padding: '1.25rem 1.5rem',
             borderRadius: 'var(--radius-md)',
-            borderLeft: '4px solid var(--ncc-gold)',
+            border: '1px solid var(--border-light)',
             fontSize: '0.8125rem',
             color: 'var(--text-muted)'
           }}>

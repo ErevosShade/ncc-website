@@ -80,7 +80,6 @@ export default function Activities() {
     <main>
       <section className="page-header-banner">
         <div className="container">
-          <span className="page-eyebrow">DOCUMENTED SERVICE &amp; OUTREACH</span>
           <h1 className="page-title">Unit Activities Archive</h1>
           <p className="page-subtitle">
             Documented public outreach records, ceremonial parades, environmental preservation drives, and training deployments conducted by 3 Jharkhand CTC NCC.

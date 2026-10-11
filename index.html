@@ -7,16 +7,19 @@
   <meta name="description" content="Official website of 3 Jharkhand Composite Technical Company, National Cadet Corps (NCC), Birla Institute of Technology, Mesra, Ranchi." />
   <title>NCC BIT Mesra — 3 Jharkhand Composite Technical Company</title>
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="/logo.jpeg" />
-  <link rel="apple-touch-icon" href="/logo.jpeg" />
+  <!-- Favicon: Official NCC SVG Emblem with no background -->
+  <link rel="icon" type="image/svg+xml" href="/ncc-logo.svg" />
+  <link rel="apple-touch-icon" href="/ncc-logo.png" />
 
-  <!-- Google Fonts: Cinzel, Plus Jakarta Sans, Noto Sans Devanagari -->
+  <!-- Google Fonts: Roboto (Official Indian Govt / NCC Portal font), Cinzel, Noto Sans Devanagari -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Noto+Sans+Devanagari:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Cinzel:wght@600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Native background audio element (no autoplay: triggered via keyboard 'play' or 'amrit' or player widget) -->
+  <audio id="ncc-bg-anthem" src="/audio/song.mpeg" preload="auto" loop playsinline></audio>
+
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="site-header">
       <div className="container header-inner">
         <Link to="/" className="brand-lockup" onClick={closeMobile} aria-label="National Cadet Corps BIT Mesra Home">
-          <img src="/logo.jpeg" alt="NCC Crest" className="brand-crest" />
+          <img src="/ncc-logo.svg" alt="NCC Crest" className="brand-crest" />
           <div className="brand-text">
             <span className="brand-hindi">राष्ट्रीय कैडेट कोर</span>
             <span className="brand-title">NATIONAL CADET CORPS</span>
@@ -46,6 +46,9 @@ export default function Navbar() {
           <NavLink to="/gallery" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             Gallery
           </NavLink>
+          <a href="/#about" className="nav-cta" onClick={closeMobile}>
+            Enrolment
+          </a>
         </nav>
       </div>
     </header>

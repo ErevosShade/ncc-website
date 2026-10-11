@@ -11,7 +11,7 @@ const galleryItems = [
   {
     id: 2,
     title: "National Cadet Corps Official Crest",
-    src: "/logo.jpeg",
+    src: "/ncc-logo.svg",
     category: "Heraldry",
     caption: "The official tri-service emblem with the 17-lotus wreath and 'एकता और अनुशासन' motto scroll."
   },
@@ -31,7 +31,6 @@ export default function Gallery() {
     <main>
       <section className="page-header-banner">
         <div className="container">
-          <span className="page-eyebrow">PHOTO &amp; MEDIA ARCHIVE</span>
           <h1 className="page-title">Cadet Photo Archive</h1>
           <p className="page-subtitle">
             Visual record of ceremonial parades, camp deployments, Guard of Honour formations, and community outreach conducted by 3 Jharkhand CTC NCC at BIT Mesra.
@@ -53,8 +52,8 @@ export default function Gallery() {
                   <img 
                     src={item.src} 
                     alt={item.title} 
-                    style={{ width: '100%', height: '100%', objectFit: item.id === 2 ? 'contain' : 'cover', background: item.id === 2 ? '#FFF' : 'transparent', padding: item.id === 2 ? '1.5rem' : '0' }}
-                    onError={(e) => { e.target.src = '/logo.jpeg'; }}
+                    style={{ width: '100%', height: '100%', objectFit: item.id === 2 ? 'contain' : 'cover', background: item.id === 2 ? '#1E206F' : 'transparent', padding: item.id === 2 ? '1.5rem' : '0' }}
+                    onError={(e) => { e.target.src = '/ncc-logo.svg'; }}
                   />
                 </div>
                 <div style={{ padding: '1.25rem' }}>
@@ -66,7 +65,7 @@ export default function Gallery() {
             ))}
           </div>
 
-          <div style={{ marginTop: '2.5rem', padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', borderLeft: '3px solid var(--ncc-gold)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
+          <div style={{ marginTop: '2.5rem', padding: '1rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-light)', fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
             <strong>Archival Policy:</strong> Photographs displayed represent verified historical activities documented by BIT Mesra. Cadets wishing to submit approved high-resolution camp photographs may contact the unit media cell via the ANO office.
           </div>
         </div>

@@ -10,11 +10,20 @@ Built with **React**, **Vite**, and **React Router DOM**.
 
 The portal features five dedicated, consistently designed pages:
 
-1. **Home (`/`)**: Institutional command overview, tri-service crest showcase, key unit figures (1956, 1957, 3 Platoons, 200 Cadres), mini **Legacy & History** preview with a "Click for More" route, mini **Gallery** preview with a "Click for More" route, and quick notices banner.
+1. **Home (`/`)**: Full SPA landing page with hero command, key stats (1956, 1957, 3 Platoons, 200 Cadres), full **Legacy & History** timeline, technical platoons, training syllabus, achievements/certifications, documented activities, gallery highlights, enrolment guidelines, and interactive FAQ.
 2. **Legacy & History (`/history`)**: Chronological formation timeline (1956 Sindri, 1957 Mesra, 1964 1 Bihar EME, 1967 Mixed Regiment, 1977 Composite Tech Co, 2000+ 3 Jharkhand CTC), official crest heraldry, and technical platoons (Engineers, Signals, EME).
 3. **Notices (`/notices`)**: Authorised circulars, enrolment notices, examination nominal roll deadlines, and camp movement orders with interactive category filter and detail viewer.
 4. **Activities (`/activities`)**: Documented unit events (Independence Day Parade, Puneet Sagar Abhiyan river cleanup, Kargil Vijay Diwas marathon, Swachh Bharat Abhiyan) with interactive category filtering.
 5. **Gallery (`/gallery`)**: Archival photo repository with full-screen interactive image lightbox.
+
+---
+
+## 🎵 NCC Anthem Audio (`song.mpeg`)
+
+The official Song of NCC (*"हम सब भारतीय हैं"*) audio file [`song.mpeg`](file:///C:/Users/Mysha/Documents/Event%20Projects/ncc-website/public/audio/song.mpeg) is structured under:
+- **Location**: `public/audio/song.mpeg`
+- **Auto-Playback**: Automatically initiates on website load (with seamless one-touch fallback for browsers with strict unmuted autoplay policies).
+- **Controls**: Persistent floating widget at the bottom-left with Play/Pause, Mute/Unmute, and status indicator, plus an embedded player inside the Anthem Lyrics Modal.
 
 ---
 
@@ -35,7 +44,7 @@ The portal features five dedicated, consistently designed pages:
 # 1. Install dependencies
 npm install
 
-# 2. Run local development server
+# 2. Run local development server (runs on http://localhost:8000)
 npm run dev
 
 # 3. Production build

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import NoticeTicker from './components/NoticeTicker';
 import Footer from './components/Footer';
 import AnthemModal from './components/AnthemModal';
+import AudioPlayer from './components/AudioPlayer';
 
 // Exactly 5 Pages
 import Home from './pages/Home';
@@ -52,6 +53,9 @@ export default function App() {
 
       <Footer onOpenAnthem={() => setAnthemOpen(true)} />
       <AnthemModal isOpen={anthemOpen} onClose={() => setAnthemOpen(false)} />
+      
+      {/* Autoplay Background NCC Anthem Player with Floating Controls */}
+      <AudioPlayer />
     </>
   );
 }
