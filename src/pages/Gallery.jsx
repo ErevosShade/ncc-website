@@ -1,16 +1,23 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
-import { galleryCategories, galleryItems } from '../data/galleryData';
+import { galleryCategories, galleryItems, mediaAchievements } from '../data/galleryData';
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState('bento'); // 'bento' or 'uniform'
-  const [lightboxIndex, setLightboxIndex] = useState(null);
+  
+  // Unified Lightbox State supporting both archival dispatches and media achievements
+  const [lightboxState, setLightboxState] = useState({
+    isOpen: false,
+    items: galleryItems,
+    index: 0,
+    collectionTitle: 'Archival Field Dispatch'
+  });
   const [isZoomed, setIsZoomed] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   const filmstripRef = useRef(null);
 
-  // Compute category counts
+  // Compute category counts for archival items
   const categoryCounts = useMemo(() => {
     const counts = { all: galleryItems.length };
     galleryItems.forEach(item => {
@@ -19,7 +26,7 @@ export default function Gallery() {
     return counts;
   }, []);
 
-  // Filter items based on activeCategory and searchQuery
+  // Filter archival items based on activeCategory and searchQuery
   const filteredItems = useMemo(() => {
     return galleryItems.filter(item => {
       const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
@@ -39,70 +46,108 @@ export default function Gallery() {
   useEffect(() => {
     const hash = window.location.hash.replace('#', '');
     if (hash) {
-      const idx = galleryItems.findIndex(i => i.slug === hash);
-      if (idx !== -1) {
-        setLightboxIndex(idx);
+      // Check media achievements first
+      const mediaIdx = mediaAchievements.findIndex(i => i.slug === hash);
+      if (mediaIdx !== -1) {
+        setLightboxState({
+          isOpen: true,
+          items: mediaAchievements,
+          index: mediaIdx,
+          collectionTitle: 'Media Coverage & Achievement'
+        });
+        return;
+      }
+      // Check archival gallery items
+      const galIdx = galleryItems.findIndex(i => i.slug === hash);
+      if (galIdx !== -1) {
+        setLightboxState({
+          isOpen: true,
+          items: galleryItems,
+          index: galIdx,
+          collectionTitle: 'Archival Field Dispatch'
+        });
       }
     }
   }, []);
 
   // Synchronize URL hash with current active lightbox photo
   useEffect(() => {
-    if (lightboxIndex !== null) {
-      const item = galleryItems[lightboxIndex];
+    if (lightboxState.isOpen) {
+      const item = lightboxState.items[lightboxState.index];
       if (item && window.location.hash !== `#${item.slug}`) {
         window.history.replaceState(null, '', `${window.location.pathname}#${item.slug}`);
       }
     } else {
-      if (window.location.hash) {
+      const hash = window.location.hash.replace('#', '');
+      const isItemSlug = galleryItems.some(i => i.slug === hash) || mediaAchievements.some(i => i.slug === hash);
+      if (isItemSlug) {
         window.history.replaceState(null, '', window.location.pathname);
       }
     }
-  }, [lightboxIndex]);
+  }, [lightboxState.isOpen, lightboxState.index, lightboxState.items]);
 
-  // Lightbox navigation helpers
-  const openLightbox = (item) => {
+  // Lightbox openers
+  const openArchivalLightbox = (item) => {
     const index = galleryItems.findIndex(i => i.id === item.id);
-    if (index !== -1) {
-      setLightboxIndex(index);
-      setIsZoomed(false);
-      setIsCopied(false);
-    }
+    setLightboxState({
+      isOpen: true,
+      items: galleryItems,
+      index: index !== -1 ? index : 0,
+      collectionTitle: 'Archival Field Dispatch'
+    });
+    setIsZoomed(false);
+    setIsCopied(false);
+  };
+
+  const openMediaLightbox = (item) => {
+    const index = mediaAchievements.findIndex(i => i.id === item.id);
+    setLightboxState({
+      isOpen: true,
+      items: mediaAchievements,
+      index: index !== -1 ? index : 0,
+      collectionTitle: 'Media Coverage & Achievement'
+    });
+    setIsZoomed(false);
+    setIsCopied(false);
   };
 
   const closeLightbox = () => {
-    setLightboxIndex(null);
+    setLightboxState(prev => ({ ...prev, isOpen: false }));
     setIsZoomed(false);
     setIsCopied(false);
   };
 
   const nextLightboxImg = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % galleryItems.length);
-      setIsZoomed(false);
-      setIsCopied(false);
-    }
+    if (!lightboxState.isOpen || !lightboxState.items.length) return;
+    setLightboxState(prev => ({
+      ...prev,
+      index: (prev.index + 1) % prev.items.length
+    }));
+    setIsZoomed(false);
+    setIsCopied(false);
   };
 
   const prevLightboxImg = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex - 1 + galleryItems.length) % galleryItems.length);
-      setIsZoomed(false);
-      setIsCopied(false);
-    }
+    if (!lightboxState.isOpen || !lightboxState.items.length) return;
+    setLightboxState(prev => ({
+      ...prev,
+      index: (prev.index - 1 + prev.items.length) % prev.items.length
+    }));
+    setIsZoomed(false);
+    setIsCopied(false);
   };
 
   const handleCopyLink = async (e) => {
     e.stopPropagation();
-    if (lightboxIndex === null) return;
-    const item = galleryItems[lightboxIndex];
+    if (!lightboxState.isOpen) return;
+    const item = lightboxState.items[lightboxState.index];
+    if (!item) return;
     const url = `${window.location.origin}${window.location.pathname}#${item.slug}`;
     try {
       await navigator.clipboard.writeText(url);
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2200);
     } catch {
-      // Fallback if clipboard API is constrained
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 1500);
     }
@@ -110,7 +155,7 @@ export default function Gallery() {
 
   // Keyboard navigation for Lightbox
   useEffect(() => {
-    if (lightboxIndex === null) return;
+    if (!lightboxState.isOpen) return;
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') closeLightbox();
@@ -126,17 +171,17 @@ export default function Gallery() {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = originalOverflow;
     };
-  }, [lightboxIndex]);
+  }, [lightboxState.isOpen, lightboxState.index, lightboxState.items.length]);
 
   // Auto-scroll active thumbnail into view in the filmstrip
   useEffect(() => {
-    if (lightboxIndex !== null && filmstripRef.current) {
-      const activeThumb = filmstripRef.current.children[lightboxIndex];
+    if (lightboxState.isOpen && filmstripRef.current) {
+      const activeThumb = filmstripRef.current.children[lightboxState.index];
       if (activeThumb) {
         activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
     }
-  }, [lightboxIndex]);
+  }, [lightboxState.isOpen, lightboxState.index]);
 
   // Touch swipe support for Lightbox
   const touchStartXRef = useRef(null);
@@ -151,7 +196,9 @@ export default function Gallery() {
     touchStartXRef.current = null;
   };
 
-  const currentItem = lightboxIndex !== null ? galleryItems[lightboxIndex] : null;
+  const currentItem = lightboxState.isOpen && lightboxState.items[lightboxState.index]
+    ? lightboxState.items[lightboxState.index]
+    : null;
 
   return (
     <main>
@@ -166,8 +213,18 @@ export default function Gallery() {
           <h1 className="page-title">Cadet Photo Archive &amp; Field Records</h1>
           <p className="page-subtitle">
             Visual record of ceremonial parades, flight briefings with Army Aviation, annual training camp deployments, 
-            Guard of Honour salutations, and civic outreach conducted by 3 JHAR CTC NCC at Birla Institute of Technology, Mesra.
+            Guard of Honour salutations, civic outreach, and regional press coverage conducted by 3 JHAR CTC NCC at Birla Institute of Technology, Mesra.
           </p>
+
+          {/* Direct Section Quick Jump Anchors */}
+          <div className="gallery-nav-anchors" role="navigation" aria-label="Section Quick Jump">
+            <a href="#media-coverage" className="gallery-nav-anchor-btn primary">
+              <span>📰 Media Coverage &amp; Achievements ({mediaAchievements.length})</span>
+            </a>
+            <a href="#cadet-dispatches" className="gallery-nav-anchor-btn secondary">
+              <span>📸 Archival Field Dispatches ({galleryItems.length})</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -180,12 +237,12 @@ export default function Gallery() {
               <span className="gallery-stat-lbl">Archival Photographs</span>
             </div>
             <div className="gallery-stat-item">
-              <span className="gallery-stat-num">3</span>
-              <span className="gallery-stat-lbl">Tri-Service Wings</span>
+              <span className="gallery-stat-num">{mediaAchievements.length}</span>
+              <span className="gallery-stat-lbl">Press &amp; Media Features</span>
             </div>
             <div className="gallery-stat-item">
-              <span className="gallery-stat-num">100%</span>
-              <span className="gallery-stat-lbl">Authentic Deployments</span>
+              <span className="gallery-stat-num">3</span>
+              <span className="gallery-stat-lbl">Tri-Service Wings</span>
             </div>
             <div className="gallery-stat-item">
               <span className="gallery-stat-num">CTC</span>
@@ -195,9 +252,195 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* 3. Interactive Filtering & Bento Showcase */}
-      <section className="page-section" style={{ paddingTop: '1.5rem' }}>
+      {/* =========================================================================
+          3. SEPARATE SECTION: MEDIA & COVERAGE (HIGHLIGHTING ACHIEVEMENTS)
+          ========================================================================= */}
+      <section className="media-coverage-section" id="media-coverage" aria-labelledby="media-heading">
         <div className="container">
+          <div className="media-section-header">
+            <div className="media-section-topline">
+              <span className="badge-tag badge-gold">PRESS DISPATCHES &amp; PUBLIC RECOGNITION</span>
+              <span style={{ fontSize: '0.8125rem', color: 'var(--text-subtle)', fontWeight: 600 }}>
+                {mediaAchievements.length} Official Press &amp; Publication Records
+              </span>
+            </div>
+            <h2 className="section-main-title" id="media-heading" style={{ margin: '0.25rem 0 0.5rem 0' }}>
+              Media Coverage &amp; Unit Achievements
+            </h2>
+            <p className="section-desc">
+              Authentic newspaper clippings, regional press reports, and official commemorative releases highlighting key achievements, 
+              community outreach, sports championships, and defense technical training undertaken by 3 Jharkhand Composite Technical Company NCC at BIT Mesra.
+            </p>
+
+            {/* Quick Accolade Milestones Strip */}
+            <div className="media-accolades-strip" aria-label="Key Unit Accolades">
+              <div className="media-accolade-chip">
+                <span className="chip-dot"></span>
+                <span>10-KM Har Ghar Tiranga Walkathon</span>
+              </div>
+              <div className="media-accolade-chip">
+                <span className="chip-dot"></span>
+                <span>Army Aviation Reconnaissance Study</span>
+              </div>
+              <div className="media-accolade-chip">
+                <span className="chip-dot"></span>
+                <span>National Sports Day 2026 Champion Meet</span>
+              </div>
+              <div className="media-accolade-chip">
+                <span className="chip-dot"></span>
+                <span>University Induction Platform 2026</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Grid of Media & Coverage Cards */}
+          <div className="media-coverage-grid">
+            {mediaAchievements.map((item) => (
+              <article
+                key={item.id}
+                className="media-card"
+                aria-label={`Media coverage: ${item.title}`}
+              >
+                {/* Image Wrap with Enlarge Prompt */}
+                <div
+                  className="media-card-img-wrap"
+                  onClick={() => openMediaLightbox(item)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      openMediaLightbox(item);
+                    }
+                  }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`Click to inspect clipping: ${item.title}`}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="media-card-img"
+                    loading="lazy"
+                    onError={(e) => { e.currentTarget.src = '/ncc-logo.svg'; }}
+                  />
+
+                  {/* Top Scrim with Badges */}
+                  <div className="media-card-top-scrim">
+                    <span className="media-badge-pill">
+                      {item.tag}
+                    </span>
+                    <span className="media-date-pill">
+                      {item.date}
+                    </span>
+                  </div>
+
+                  {/* Bottom Scrim with Click Prompt */}
+                  <div className="media-card-bottom-scrim">
+                    <span className="media-inspect-prompt">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                      </svg>
+                      <span>Click to Enlarge &amp; Read Dispatch</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card Content & Achievement Highlights */}
+                <div className="media-card-body">
+                  <div className="media-card-meta-line">
+                    <span className="media-outlet-badge">
+                      📰 {item.source}
+                    </span>
+                    <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-subtle)' }}>
+                      {item.publicationType}
+                    </span>
+                  </div>
+
+                  {item.hindiHeadline && (
+                    <h3 className="media-hindi-headline">
+                      "{item.hindiHeadline}"
+                    </h3>
+                  )}
+
+                  <h4 className="media-english-title">
+                    {item.title}
+                  </h4>
+
+                  <p className="media-card-summary">
+                    {item.summary}
+                  </p>
+
+                  {/* Key Highlights Checklist */}
+                  <div className="media-highlights-list">
+                    {item.highlights.map((highlight, hIdx) => (
+                      <div key={hIdx} className="media-highlight-item">
+                        <span className="media-highlight-icon">✓</span>
+                        <span>{highlight}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Card Action Footer */}
+                  <div className="media-card-actions">
+                    <div className="media-location-info">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                      </svg>
+                      <span>{item.location}</span>
+                    </div>
+
+                    <div className="media-btn-group">
+                      <button
+                        type="button"
+                        className="btn-inspect-media"
+                        onClick={() => openMediaLightbox(item)}
+                        aria-label={`Enlarge ${item.title}`}
+                      >
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="11" cy="11" r="8"></circle>
+                          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <span>Read Dispatch</span>
+                      </button>
+
+                      <a
+                        href={item.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-original-media"
+                        title="View high-resolution original image"
+                      >
+                        Original ↗
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          4. ARCHIVAL CADET FIELD DISPATCHES & BENTO SHOWCASE
+          ========================================================================= */}
+      <section className="page-section" id="cadet-dispatches" style={{ paddingTop: '2.5rem' }}>
+        <div className="container">
+          <div style={{ marginBottom: '1.25rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', marginBottom: '0.35rem' }}>
+              <span className="badge-tag badge-navy">HISTORIC &amp; FIELD PHOTOGRAPHY</span>
+            </div>
+            <h2 className="section-main-title" style={{ margin: '0.2rem 0 0.5rem 0' }}>
+              Cadet Field Dispatches &amp; Photographic Archive
+            </h2>
+            <p className="section-desc">
+              Filter and explore authentic high-resolution field photographs documented across training camps, Guard of Honour formations, 
+              sword salutes, aviation orientations, and inter-service competitions.
+            </p>
+          </div>
+
           {/* Controls Bar */}
           <div className="gallery-toolbar-container">
             <div className="gallery-filter-row">
@@ -296,11 +539,11 @@ export default function Gallery() {
                 <div
                   key={item.id}
                   className={`gallery-card ${viewMode === 'bento' ? item.gridSpan : ''}`}
-                  onClick={() => openLightbox(item)}
+                  onClick={() => openArchivalLightbox(item)}
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
-                      openLightbox(item);
+                      openArchivalLightbox(item);
                     }
                   }}
                   tabIndex={0}
@@ -375,13 +618,15 @@ export default function Gallery() {
             <span style={{ fontSize: '1.25rem', color: 'var(--ncc-navy)', flexShrink: 0 }}>🛡️</span>
             <div>
               <strong style={{ color: 'var(--ncc-navy)', display: 'block', marginBottom: '0.2rem' }}>Archival Integrity &amp; Unit Documentation Policy:</strong>
-              Photographs presented in this archive represent authentic training activities, ceremonial guard formations, state reviews, and social campaigns undertaken by 3 Jharkhand Composite Technical Company NCC at BIT Mesra, Ranchi. All images are documented under the stewardship of the unit media cell and Associate NCC Officer. For official publication requests or high-resolution camp negatives, contact the ANO Office.
+              Photographs and dispatches presented in this archive represent authentic training activities, ceremonial guard formations, state reviews, and social campaigns undertaken by 3 Jharkhand Composite Technical Company NCC at BIT Mesra, Ranchi. All media records are maintained under the stewardship of the unit media cell and Caretaker Officer / Associate NCC Officer. For official publication requests or high-resolution camp negatives, contact the Unit Headquarters.
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4. Cinematic Lightbox Theatre */}
+      {/* =========================================================================
+          5. CINEMATIC FULLSCREEN LIGHTBOX THEATRE (UNIFIED)
+          ========================================================================= */}
       {currentItem && (
         <div
           className="lightbox-backdrop"
@@ -395,9 +640,9 @@ export default function Gallery() {
           {/* Lightbox Header */}
           <div className="lightbox-header" onClick={(e) => e.stopPropagation()}>
             <div className="lightbox-title-area">
-              <span className="lightbox-unit-badge">{currentItem.unit}</span>
+              <span className="lightbox-unit-badge">{currentItem.tag || currentItem.unit}</span>
               <span className="lightbox-counter-badge">
-                DISPATCH {String(lightboxIndex + 1).padStart(2, '0')} / {String(galleryItems.length).padStart(2, '0')}
+                {lightboxState.collectionTitle.toUpperCase()} • {String(lightboxState.index + 1).padStart(2, '0')} / {String(lightboxState.items.length).padStart(2, '0')}
               </span>
             </div>
 
@@ -405,8 +650,8 @@ export default function Gallery() {
               <button
                 className="lightbox-action-btn"
                 onClick={handleCopyLink}
-                title="Copy direct link to this photograph"
-                aria-label="Copy direct photograph link"
+                title="Copy direct link to this record"
+                aria-label="Copy direct record link"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
@@ -501,6 +746,11 @@ export default function Gallery() {
           <div className="lightbox-footer" onClick={(e) => e.stopPropagation()}>
             <div className="lightbox-info-row">
               <div className="lightbox-caption-box">
+                {currentItem.hindiHeadline && (
+                  <div style={{ fontFamily: 'var(--font-hindi)', fontSize: '1.25rem', fontWeight: 700, color: 'var(--ncc-gold)', marginBottom: '0.35rem' }}>
+                    "{currentItem.hindiHeadline}"
+                  </div>
+                )}
                 <h2 className="lightbox-caption-title">{currentItem.title}</h2>
                 <p className="lightbox-caption-text">{currentItem.caption}</p>
                 <div className="lightbox-caption-meta">
@@ -509,6 +759,12 @@ export default function Gallery() {
                   <span>TAG: {currentItem.tag}</span>
                   <span>•</span>
                   <span>YEAR: {currentItem.year}</span>
+                  {currentItem.source && (
+                    <>
+                      <span>•</span>
+                      <span>SOURCE: {currentItem.source}</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -520,19 +776,19 @@ export default function Gallery() {
               role="tablist"
               aria-label="Photograph Filmstrip"
             >
-              {galleryItems.map((thumb, idx) => (
+              {lightboxState.items.map((thumb, idx) => (
                 <button
                   key={thumb.id}
-                  className={`lightbox-thumb-btn ${idx === lightboxIndex ? 'active' : ''}`}
+                  className={`lightbox-thumb-btn ${idx === lightboxState.index ? 'active' : ''}`}
                   onClick={() => {
-                    setLightboxIndex(idx);
+                    setLightboxState(prev => ({ ...prev, index: idx }));
                     setIsZoomed(false);
                     setIsCopied(false);
                   }}
                   title={thumb.title}
                   aria-label={`Jump to ${thumb.title}`}
                   role="tab"
-                  aria-selected={idx === lightboxIndex}
+                  aria-selected={idx === lightboxState.index}
                 >
                   <img
                     src={thumb.src}

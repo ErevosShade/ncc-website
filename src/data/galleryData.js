@@ -281,3 +281,115 @@ export const galleryItems = [
     unit: '3 JHAR CTC NCC'
   }
 ];
+
+export const mediaAchievements = [
+  {
+    id: 'media-1',
+    slug: 'har-ghar-tiranga-walkathon-coverage',
+    title: 'Har Ghar Tiranga: 10-KM Walkathon & National Unity Drive',
+    hindiHeadline: 'हर घर तिरंगा के तहत किया वॉकथॉन',
+    source: 'Regional Daily Press (Ranchi Edition)',
+    publicationType: 'Newspaper Print Clipping',
+    date: 'August 2026',
+    year: '2026',
+    tag: 'HAR GHAR TIRANGA',
+    category: 'outreach',
+    categoryLabel: 'Community Outreach',
+    src: '/images/gallery/MEDIA%20and%20COVERAGE/WhatsApp%20Image%202026-10-12%20at%2007.21.21.jpeg',
+    aspect: 'portrait',
+    location: 'BIT Mesra to Pancholi Village, Ranchi',
+    unit: '3 JHAR CTC NCC',
+    badge: 'PRESS CITATION',
+    badgeVariant: 'badge-gold',
+    summary: 'Front-page regional news report covering the 10-km Har Ghar Tiranga awareness march to Pancholi village, national flag distribution to rural households, and student poster exhibition.',
+    caption: 'Published newspaper dispatch reporting 3 JHAR CTC NCC’s 10-kilometre walkathon and civic outreach to Pancholi village under the Har Ghar Tiranga national mission. Cadets mobilized to educate rural families and distribute national flags. The event was inaugurated by Dean of Student Affairs Dr. Pravin Shrivastava and NCC CO Lt. Col. Vikram, guided by Dr. Sumit Srivastava. Students also organized a poster creation exhibition promoting national integration.',
+    highlights: [
+      '10-km rural walkathon motivating local households to hoist the National Flag',
+      'Direct Tiranga flag distribution and community interaction at Pancholi village',
+      'National Unity poster creation competition conducted by cadet artists',
+      'Inaugurated by Dean (Student Affairs) Dr. Pravin Shrivastava & NCC CO Lt. Col. Vikram'
+    ]
+  },
+  {
+    id: 'media-2',
+    slug: 'army-aviation-corps-briefing-coverage',
+    title: 'Army Aviation Corps: Operational Role & Tactical Flight Systems Briefing',
+    hindiHeadline: 'बीआईटी मेसरा की टीम ने आर्मी एविएशन की भूमिका को समझा',
+    source: 'Dainik Daily (Senior Military Correspondent)',
+    publicationType: 'Special Print Feature',
+    date: '2026',
+    year: '2026',
+    tag: 'ARMY AVIATION',
+    category: 'aviation',
+    categoryLabel: 'Defence Aviation',
+    src: '/images/gallery/MEDIA%20and%20COVERAGE/WhatsApp%20Image%202026-10-12%20at%2007.21.22%20(1).jpeg',
+    aspect: 'landscape',
+    location: 'Army Reconnaissance & Observation Flight Base, Ranchi',
+    unit: 'Army Aviation Corps / 3 JHAR CTC',
+    badge: 'DEFENCE TECHNICAL STUDY',
+    badgeVariant: 'badge-sky',
+    summary: 'Special press dispatch reporting on the educational field visit of BIT Mesra NCC cadets to the Army Reconnaissance & Observation Flight, Army Aviation Corps.',
+    caption: 'Senior correspondent press feature reporting the specialized defense study tour undertaken by BIT Mesra NCC cadets to the Army Reconnaissance and Observation Flight (Army Aviation Corps). Organized under the mentorship of Dr. Sumit Srivastava, cadets interacted closely with military pilots to study battlefield reconnaissance (टोही), aerial surveillance, airborne communication networks, and tactical flight procedures during military operations.',
+    highlights: [
+      'Specialized technical visit to Army Reconnaissance and Observation Flight base',
+      'Direct interaction with Indian Army Aviation officers and flight crews',
+      'Comprehensive briefing on aerial reconnaissance, border surveillance & mission planning',
+      'Technical aerospace orientation guided by Caretaker Officer Dr. Sumit Srivastava'
+    ]
+  },
+  {
+    id: 'media-3',
+    slug: 'national-sports-day-celebration-poster',
+    title: "National Sports Day 2026: 'Khelega India, Khilega India' Sports Festival",
+    hindiHeadline: 'राष्ट्रीय खेल दिवस 2026: खेलेगा इंडिया, खिलेगा इंडिया',
+    source: '3 JHAR CTC NCC Official Publication',
+    publicationType: 'Official Commemorative Release',
+    date: '29 August 2026',
+    year: '2026',
+    tag: 'SPORTS EXCELLENCE',
+    category: 'camp',
+    categoryLabel: 'Athletics & Camp Life',
+    src: '/images/gallery/MEDIA%20and%20COVERAGE/WhatsApp%20Image%202026-10-12%20at%2007.21.22.jpeg',
+    aspect: 'portrait',
+    location: 'Main Sports Grounds, BIT Mesra',
+    unit: '3 JHAR CTC NCC',
+    badge: 'SPORTS CHAMPIONSHIP',
+    badgeVariant: 'badge-red',
+    summary: 'Official commemorative media release documenting unit-wide athletic fixtures on National Sports Day celebrating physical fitness, team discipline, and sportsmanship.',
+    caption: 'Official unit publication and commemorative poster for National Sports Day 2026 at BIT Mesra celebrating the national spirit of "Khelega India, Khilega India". Showcasing competitive fixtures across Arm Wrestling, Tug-of-War, Cycling, Volleyball, and Archery. Distinguished Guest Dr. D. K. Upadhaya (Associate Dean, Student Affairs) and Lt. Col. Vikram Vishal addressed the cadets, with complete organization by Dr. Sumit Srivastava (CTO).',
+    highlights: [
+      'Multi-discipline athletic fixtures: Arm Wrestling, Tug of War, Cycling, Volleyball & Archery',
+      'Championing the Fit India message: "Strong Bodies, Strong Minds, Stronger Nation"',
+      'Distinguished Guest: Dr. D. K. Upadhaya (Associate Dean, Student Affairs)',
+      'Motivational address by Lt. Col. Vikram Vishal & coordination by Dr. Sumit Srivastava (CTO)'
+    ]
+  },
+  {
+    id: 'media-4',
+    slug: 'student-induction-programme-2026',
+    title: 'Student Induction Programme 2026: Welcoming the New Batch',
+    hindiHeadline: 'विद्यार्थी दीक्षारंभ कार्यक्रम 2026 - नवप्रवेशी बैच का स्वागत',
+    source: 'BIT Mesra Media & Communications Cell',
+    publicationType: 'Institutional Milestone Record',
+    date: 'July 2026',
+    year: '2026',
+    tag: 'INSTITUTIONAL HONOUR',
+    category: 'honors',
+    categoryLabel: 'Institutional Ceremony',
+    src: '/images/gallery/MEDIA%20and%20COVERAGE/WhatsApp%20Image%202026-10-12%20at%2007.21.23.jpeg',
+    aspect: 'square',
+    location: 'Central Auditorium (CAT), BIT Mesra',
+    unit: 'BIT Mesra & 3 JHAR CTC NCC',
+    badge: 'CADET INDUCTION',
+    badgeVariant: 'badge-navy',
+    summary: 'Official university media documentation of the 2026 Student Induction Programme assembly welcoming new undergraduate students, featuring unit leadership and Army PI Staff.',
+    caption: 'Official institutional photograph of the Student Induction Programme (SIP) 2026 in the Central Auditorium, BIT Mesra. Unit leadership, Permanent Instructional (PI) military staff, and Caretaker Officer Dr. Sumit Srivastava shared the dais with Institute leadership to address the incoming cohort, inspiring freshers toward military discipline, leadership opportunities, and Senior Division enrolment in 3 JHAR CTC NCC.',
+    highlights: [
+      'Auditorium-wide address to over 1,000+ incoming engineering and architecture undergraduates',
+      'Prominent dais presence of Indian Army PI Staff in ceremonial combat dress',
+      'Comprehensive orientation on NCC training syllabus, firing camps & SSB opportunities',
+      'Documented in official Birla Institute of Technology archives'
+    ]
+  }
+];
+
