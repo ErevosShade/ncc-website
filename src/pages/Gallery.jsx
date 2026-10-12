@@ -320,6 +320,7 @@ export default function Gallery() {
                     alt={item.title}
                     className="media-card-img"
                     loading="lazy"
+                    decoding="async"
                     onError={(e) => { e.currentTarget.src = '/ncc-logo.svg'; }}
                   />
 
@@ -556,6 +557,7 @@ export default function Gallery() {
                       alt={item.title}
                       className="gallery-card-img"
                       loading="lazy"
+                      decoding="async"
                       onError={(e) => { e.currentTarget.src = '/ncc-logo.svg'; }}
                     />
                   </div>
@@ -579,16 +581,10 @@ export default function Gallery() {
                     <div className="gallery-card-bottom">
                       <h3 className="gallery-card-title">{item.title}</h3>
                       <div className="gallery-card-meta">
-                        <span className="gallery-card-meta-item">
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                          </svg>
-                          <span>{item.location}</span>
-                        </span>
-                        <span>•</span>
                         <span>{item.year}</span>
+                        <span>•</span>
+                        <span>{item.tag}</span>
                       </div>
-                      <p className="gallery-card-caption-snippet">{item.caption}</p>
                     </div>
                   </div>
                 </div>
