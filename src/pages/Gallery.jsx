@@ -219,10 +219,10 @@ export default function Gallery() {
           {/* Direct Section Quick Jump Anchors */}
           <div className="gallery-nav-anchors" role="navigation" aria-label="Section Quick Jump">
             <a href="#media-coverage" className="gallery-nav-anchor-btn primary">
-              <span>📰 Media Coverage &amp; Achievements ({mediaAchievements.length})</span>
+              <span>Media Coverage &amp; Achievements ({mediaAchievements.length})</span>
             </a>
             <a href="#cadet-dispatches" className="gallery-nav-anchor-btn secondary">
-              <span>📸 Archival Field Dispatches ({galleryItems.length})</span>
+              <span>Archival Field Dispatches ({galleryItems.length})</span>
             </a>
           </div>
         </div>
@@ -352,7 +352,7 @@ export default function Gallery() {
                 <div className="media-card-body">
                   <div className="media-card-meta-line">
                     <span className="media-outlet-badge">
-                      📰 {item.source}
+                      {item.source}
                     </span>
                     <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-subtle)' }}>
                       {item.publicationType}
@@ -592,7 +592,12 @@ export default function Gallery() {
             </div>
           ) : (
             <div className="gallery-empty-state">
-              <div className="gallery-empty-icon" aria-hidden="true">🔍</div>
+              <div className="gallery-empty-icon" aria-hidden="true">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ margin: '0 auto', display: 'block' }}>
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
               <h3 style={{ fontSize: '1.25rem', marginBottom: '0.35rem' }}>No matching dispatches found</h3>
               <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginBottom: '1.25rem' }}>
                 No archival photographs match your current query "{searchQuery}". Try another keyword or reset the filter.
@@ -611,7 +616,9 @@ export default function Gallery() {
 
           {/* Archival Policy Notice */}
           <div style={{ marginTop: '3rem', padding: '1.25rem 1.5rem', background: 'var(--bg-subtle)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)', fontSize: '0.8125rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'flex-start', gap: '0.85rem' }}>
-            <span style={{ fontSize: '1.25rem', color: 'var(--ncc-navy)', flexShrink: 0 }}>🛡️</span>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--ncc-navy)', flexShrink: 0, marginTop: '2px' }} aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
             <div>
               <strong style={{ color: 'var(--ncc-navy)', display: 'block', marginBottom: '0.2rem' }}>Archival Integrity &amp; Unit Documentation Policy:</strong>
               Photographs and dispatches presented in this archive represent authentic training activities, ceremonial guard formations, state reviews, and social campaigns undertaken by 3 Jharkhand Composite Technical Company NCC at BIT Mesra, Ranchi. All media records are maintained under the stewardship of the unit media cell and Caretaker Officer / Associate NCC Officer. For official publication requests or high-resolution camp negatives, contact the Unit Headquarters.
@@ -750,7 +757,12 @@ export default function Gallery() {
                 <h2 className="lightbox-caption-title">{currentItem.title}</h2>
                 <p className="lightbox-caption-text">{currentItem.caption}</p>
                 <div className="lightbox-caption-meta">
-                  <span>📍 {currentItem.location}</span>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>{currentItem.location}</span>
+                  </span>
                   <span>•</span>
                   <span>TAG: {currentItem.tag}</span>
                   <span>•</span>
