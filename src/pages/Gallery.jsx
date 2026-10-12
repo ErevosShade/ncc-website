@@ -645,7 +645,10 @@ export default function Gallery() {
             <div className="lightbox-title-area">
               <span className="lightbox-unit-badge">{currentItem.tag || currentItem.unit}</span>
               <span className="lightbox-counter-badge">
-                {lightboxState.collectionTitle.toUpperCase()} • {String(lightboxState.index + 1).padStart(2, '0')} / {String(lightboxState.items.length).padStart(2, '0')}
+                <span className="lightbox-collection-label">{lightboxState.collectionTitle.toUpperCase()} • </span>
+                <span className="lightbox-counter-digits">
+                  {String(lightboxState.index + 1).padStart(2, '0')} / {String(lightboxState.items.length).padStart(2, '0')}
+                </span>
               </span>
             </div>
 
@@ -656,11 +659,11 @@ export default function Gallery() {
                 title="Copy direct link to this record"
                 aria-label="Copy direct record link"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                   <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                 </svg>
-                <span>{isCopied ? "✓ Copied!" : "Share"}</span>
+                <span className="lightbox-btn-text">{isCopied ? "✓ Copied!" : "Share"}</span>
               </button>
 
               <button
@@ -669,7 +672,7 @@ export default function Gallery() {
                 title={isZoomed ? "Reset Zoom" : "Zoom 1.4x"}
                 aria-label="Toggle zoom"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <circle cx="11" cy="11" r="8"></circle>
                   <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                   {isZoomed ? (
@@ -681,7 +684,7 @@ export default function Gallery() {
                     </>
                   )}
                 </svg>
-                <span>{isZoomed ? "Reset" : "Zoom"}</span>
+                <span className="lightbox-btn-text">{isZoomed ? "Reset" : "Zoom"}</span>
               </button>
 
               <a
@@ -692,12 +695,12 @@ export default function Gallery() {
                 title="Open full resolution in new tab"
                 aria-label="Open full resolution"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
                   <line x1="10" y1="14" x2="21" y2="3"></line>
                 </svg>
-                <span>Original</span>
+                <span className="lightbox-btn-text">Original</span>
               </a>
 
               <button
@@ -706,7 +709,11 @@ export default function Gallery() {
                 title="Close Lightbox (Esc)"
                 aria-label="Close Lightbox"
               >
-                ✕ Esc
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+                <span className="lightbox-btn-text">Close</span>
               </button>
             </div>
           </div>
@@ -757,21 +764,22 @@ export default function Gallery() {
                 <h2 className="lightbox-caption-title">{currentItem.title}</h2>
                 <p className="lightbox-caption-text">{currentItem.caption}</p>
                 <div className="lightbox-caption-meta">
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+                  <span className="lightbox-meta-pill">
                     <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
                     </svg>
                     <span>{currentItem.location}</span>
                   </span>
-                  <span>•</span>
-                  <span>TAG: {currentItem.tag}</span>
-                  <span>•</span>
-                  <span>YEAR: {currentItem.year}</span>
+                  <span className="lightbox-meta-pill">
+                    <span>TAG: {currentItem.tag}</span>
+                  </span>
+                  <span className="lightbox-meta-pill">
+                    <span>YEAR: {currentItem.year}</span>
+                  </span>
                   {currentItem.source && (
-                    <>
-                      <span>•</span>
+                    <span className="lightbox-meta-pill">
                       <span>SOURCE: {currentItem.source}</span>
-                    </>
+                    </span>
                   )}
                 </div>
               </div>

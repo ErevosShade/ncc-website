@@ -2360,11 +2360,23 @@ body[data-theme="dark"] .view-mode-btn.active {
 .lightbox-caption-meta {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.75rem;
-  color: var(--ncc-gold);
-  margin-top: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.lightbox-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #e2e8f0;
+  font-size: 0.72rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 /* Filmstrip dock */
@@ -3069,19 +3081,99 @@ body[data-theme="dark"] .home-gallery-card-title {
     padding-top: 0.75rem !important;
   }
 
-  /* Lightbox stage mobile padding */
-  .lightbox-stage {
-    padding: 1rem;
+  /* Mobile Lightbox Fixes */
+  .lightbox-header {
+    height: 52px !important;
+    padding: 0 0.75rem !important;
+    gap: 0.5rem !important;
+    justify-content: space-between !important;
   }
+  .lightbox-unit-badge {
+    display: none !important;
+  }
+  .lightbox-collection-label {
+    display: none !important;
+  }
+  .lightbox-counter-badge {
+    font-size: 0.75rem !important;
+    padding: 0.2rem 0.55rem !important;
+    white-space: nowrap !important;
+    max-width: 90px !important;
+  }
+  .lightbox-controls-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    margin-left: auto !important;
+  }
+  .lightbox-action-btn {
+    padding: 0 !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    justify-content: center !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .lightbox-btn-text {
+    display: none !important; /* Hide button text so buttons never push Close off-screen */
+  }
+  .lightbox-close-btn {
+    width: 34px !important;
+    min-width: 34px !important;
+    height: 34px !important;
+    background: var(--ncc-red) !important;
+    border-color: var(--ncc-red) !important;
+    color: #ffffff !important;
+  }
+  /* Remove giant floating nav arrows covering the photo on mobile */
   .lightbox-nav-btn {
-    width: 42px;
-    height: 42px;
-    font-size: 1.25rem;
+    display: none !important;
   }
-  .lightbox-nav-btn.prev { left: 0.5rem; }
-  .lightbox-nav-btn.next { right: 0.5rem; }
-  .lightbox-caption-title { font-size: 1.05rem; }
-  .lightbox-caption-text { font-size: 0.8125rem; }
+  .lightbox-stage {
+    padding: 0.35rem 0.5rem !important;
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .lightbox-main-img {
+    max-width: 96vw !important;
+    max-height: calc(100dvh - 210px) !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  /* Mobile Lightbox Footer */
+  .lightbox-footer {
+    padding: 0.65rem 0.85rem !important;
+    gap: 0.45rem !important;
+    max-height: 36vh !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .lightbox-caption-title {
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.15rem !important;
+  }
+  .lightbox-caption-text {
+    font-size: 0.75rem !important;
+    line-height: 1.4 !important;
+  }
+  .lightbox-caption-meta {
+    gap: 0.35rem !important;
+    margin-top: 0.25rem !important;
+  }
+  .lightbox-meta-pill {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.45rem !important;
+  }
+  .lightbox-filmstrip-strip {
+    padding: 0 !important;
+    gap: 0.35rem !important;
+  }
+  .lightbox-thumb-btn {
+    width: 44px !important;
+    height: 32px !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -3106,19 +3198,6 @@ body[data-theme="dark"] .home-gallery-card-title {
   }
   .gallery-search-input {
     min-width: 100%;
-  }
-  .lightbox-header {
-    padding: 0 1rem;
-  }
-  .lightbox-unit-badge {
-    display: none;
-  }
-  .lightbox-footer {
-    padding: 0.75rem 1rem;
-  }
-  .lightbox-thumb-btn {
-    width: 48px;
-    height: 36px;
   }
 }
 
